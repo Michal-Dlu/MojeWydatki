@@ -14,3 +14,4 @@ Route::get('/shops/form', function () {
 })->name('shops.form');
 Route::get('/expenses/expensesList', [ExpensesController::class, 'list'])->name('expenses.expensesList');
 Route::get('/expenses/form', [ExpensesController::class, 'create'])->name('expenses.form');
+Route::post('/expenses/zapisz', [ExpensesController::class, 'store'])->name('expenses.store'); 

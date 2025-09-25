@@ -32,7 +32,7 @@
                 </div>
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
-                                   <table class="table table-hover" class="table table-sm">
+    <table class="table table-hover" class="table table-sm">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -42,41 +42,22 @@
     </tr>
   </thead>
   <tbody>
+    @foreach ($expenses as $expense)
     <tr>
-      <th scope="row">1</th>
-      <td>Dino</td>
-      <td>100 zł</td>
-      <td>01.01.2021</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Polo</td>
-      <td>200 zł</td>
-      <td>02.02.2022</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td >Auchan</td>
-      <td>200 zł</td>
-      <td>03.03.2023</td>
-    </tr>
+      <th scope="row">{{$expense->id}}</th>
+      <td>{{$expense->sklep}}</td>
+      <td>{{$expense->kwota}}</td>
+      <td>{{$expense->data_zakupu}}</td>
+    </tr> 
+    @endforeach
   </tbody>
-</table>
-                  
+</table>                  
                     </div>
-                 
-                
-                    
-                 
-               
-                </div>
+              </div>
             </div>
         </section>
 
-    
-
-
-        <!-- Portfolio Modals-->
+     <!-- Portfolio Modals-->
         <!-- Portfolio Modal 1-->   
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
             <div class="modal-dialog modal-xl">
