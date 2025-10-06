@@ -5,7 +5,7 @@
       <header class="masthead bg-primary text-white text-center" style="padding:10px">
                 <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-0" src="assets/img/avataaars.svg" alt="..." />
+                <img class="masthead-avatar mb-0" src="assets/img/portfolio/skarbonka.png" style="height:100px; width:100px" alt="..." />
                 <!-- Masthead Heading-->
                 <h1 class="masthead-heading text-uppercase mb-0" href="{{route ('index')}}" style="font-size:30px; padding:3px">Moje wydatki</h1>
                 <!-- Icon Divider-->
@@ -40,7 +40,7 @@
                             <div class="bg-dark bg-opacity-50 text-white p-3">
                             Sklepy
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." /></a>
+                            <img class="img-fluid" src="assets/img/portfolio/sklep.jpg" style="height:257px; width:370px" alt="..." /></a>
                         </div>
                     </div>
                     <!-- Portfolio Item 2-->
@@ -52,7 +52,7 @@
                             <div class="bg-dark bg-opacity-50 text-white p-3">
                             Wydatki
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="..." /></a>
+                            <img class="img-fluid" src="assets/img/portfolio/kasa.png" style="width:370px; height:257px" alt="..." /></a>
                         </div>
                     </div>                  
                 </div>

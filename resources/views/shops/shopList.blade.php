@@ -42,23 +42,22 @@
     </tr>
   </thead>
   <tbody>
+    
+    @foreach($shops as $shop)
     <tr>
-      <th scope="row">1</th>
-      <td>Dino</td>
-      <td>Otto</td>
-      
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Polo</td>
-      <td>Thornton</td>
-      
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Auchan</td>
-      <td>@twitter</td>
-    </tr>
+      <td scope="row">{{$shop->id}}</td>
+      <td>{{$shop->shop_name}}</td>
+      <td>
+        <a href="{{route('shops.edit',$shop->id)}}" class="btn btn-primary btn-sm">Edytuj</a>
+        <form action="{{route('shops.destroy',$shop->id)}}" method="POST" style="display:inline;">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Czy na pewno chcesz usunąć ten sklep?')">Usuń</button>
+        </form>
+      </td>  
+       </tr>
+    @endforeach
+    
   </tbody>
 </table>
                   

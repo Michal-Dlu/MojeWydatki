@@ -11,8 +11,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('expenses.form')}}">Dodaj Wydatek</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('expenses.expensesList')}}">Lista Wydatków</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.form')}}">Dodaj Sklep</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.shopList')}}">Lista Sklepów</a></li>
                         
                     </ul>
                 </div>
@@ -22,8 +22,9 @@
         <section class="masthead page-section" id="contact">
             <div class="container">
                 <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Dodaj nowy wydatek</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Edytujesz sklep {{$shop->id}}</h2>
                 <!-- Icon Divider-->
+                
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
@@ -39,55 +40,19 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
                         <!-- to get an API token!-->
-                        <form id="contactForm" method="POST" action="{{ route('expenses.store') }}">
-                            <!-- Name input-->@csrf
-                            
-                             
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="{{route('shops.update',['id'=>$shop->id])}}"   >
+                            <!-- Name input-->
+                              @csrf
+                             @method('PUT')
                             <div class="form-floating mb-3">
-                                
-                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="sklep" aria-selected="{{ old('sklep') }}" >
-                                <option selected>Wybierz sklep</option>                                
-                                @foreach($shops as $shop)
-                                <option value="{{$shop->shop_name}}">{{$shop->shop_name}}</option>
-                                @endforeach                               
-                                </select>
-                                
-                                <div class="invalid-feedback" data-sb-feedback="sklep:required">Sklep jest wymagany</div>
+                                <input class="form-control" id="shop_name" type="text" name="shop_name" value="{{$shop->shop_name}}" placeholder="Wpisz nazwę sklepu" />
+                                <label for="shop_name">Nazwa sklepu</label>
+                                <div class="invalid-feedback" data-sb-feedback="Nazwa skepu jest wymagana">Nazwa sklepu jest wymagana</div>
                             </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="kwota" type="number" name="kwota" placeholder="100,00 zł"  />
-                                <label for="kwota">Kwota</label>
-                                <div class="invalid-feedback" data-sb-feedback="kwota:required">Kwota is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="kawota:number">Kwota is not valid.</div>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="date" type="date" name="data_zakupu" placeholder=""  />
-                                <label for="date">Data_zakupu</label>
-                                <div class="invalid-feedback" data-sb-feedback="data:required">Data is required.</div>
-                            </div>
-                            <!-- Message input-->
-                            
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                      
+                           
                             <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl " id="submitButton" type="submit">Zapisz</button>
+                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Zapisz sklep</button>
                         </form>
                     </div>
                 </div>

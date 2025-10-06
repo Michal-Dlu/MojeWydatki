@@ -11,91 +11,71 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('expenses.form')}}">Dodaj Wydatek</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('expenses.expensesList')}}">Lista Wydatków</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.form')}}">Dodaj Sklep</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.shopList')}}">Lista Sklepów</a></li>
                         
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <section class="masthead page-section" id="contact">
+      
+        <!-- Portfolio Section-->
+        <section class="masthead page-section portfolio" id="portfolio">
             <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Dodaj nowy wydatek</h2>
+                <!-- Portfolio Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Lista Sklepów</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Contact Section Form-->
+                <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
-                    <div class="col-lg-8 col-xl-7">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" method="POST" action="{{ route('expenses.store') }}">
-                            <!-- Name input-->@csrf
-                            
-                             
-                            <div class="form-floating mb-3">
-                                
-                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="sklep" aria-selected="{{ old('sklep') }}" >
-                                <option selected>Wybierz sklep</option>                                
-                                @foreach($shops as $shop)
-                                <option value="{{$shop->shop_name}}">{{$shop->shop_name}}</option>
-                                @endforeach                               
-                                </select>
-                                
-                                <div class="invalid-feedback" data-sb-feedback="sklep:required">Sklep jest wymagany</div>
-                            </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="kwota" type="number" name="kwota" placeholder="100,00 zł"  />
-                                <label for="kwota">Kwota</label>
-                                <div class="invalid-feedback" data-sb-feedback="kwota:required">Kwota is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="kawota:number">Kwota is not valid.</div>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="date" type="date" name="data_zakupu" placeholder=""  />
-                                <label for="date">Data_zakupu</label>
-                                <div class="invalid-feedback" data-sb-feedback="data:required">Data is required.</div>
-                            </div>
-                            <!-- Message input-->
-                            
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl " id="submitButton" type="submit">Zapisz</button>
-                        </form>
+                <table class="table table-hover" class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Użytkownik</th>
+      <th scope="col">Akcje</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    @foreach($shops as $shop)
+    <tr>
+      <td scope="row">{{$shop->id}}</td>
+      <td>{{$shop->shop_name}}</td>
+      <td>
+        <a href="{{route('shops.edit',$shop->id)}}" class="btn btn-primary btn-sm">Edytuj</a>
+        <form action="{{route('shops.destroy',$shop->id)}}" method="POST" style="display:inline;">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Czy na pewno chcesz usunąć ten sklep?')">Usuń</button>
+        </form>
+      </td>  
+       </tr>
+    @endforeach
+    
+  </tbody>
+</table>
+                  
                     </div>
+                 
+                
+                    
+                 
+               
                 </div>
             </div>
         </section>
 
+    
+
+
         <!-- Portfolio Modals-->
-        <!-- Portfolio Modal 1-->
+        <!-- Portfolio Modal 1-->   
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
@@ -298,4 +278,4 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
-@endsection
+    @endsection
