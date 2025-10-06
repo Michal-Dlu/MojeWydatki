@@ -28,7 +28,7 @@ class ExpensesController extends Controller
         $expense->sklep = $validated['sklep'];
         $expense->kwota = $validated['kwota'];
         $expense->data_zakupu = $validated['data_zakupu'];
-        $expense->shop_id = $request->input('shop_id'); // Assuming 'shop_id' is passed from the form
+       
         
         
         $expense->save();

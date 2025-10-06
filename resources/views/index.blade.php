@@ -29,9 +29,20 @@
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Portfolio Grid Items-->
+                <!-- uzytkownik Grid Items-->
                 <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
+                     <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto"><a class="navbar-brand" href="{{ route('customers.customers') }}">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <div class="bg-dark bg-opacity-50 text-white p-3">
+                            Użytkownicy
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/avataaars.svg" style="width:370px; height:257px" alt="..." /></a>
+                        </div>
+                    </div> 
+                    <!-- sklep Item 1-->
                     <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item mx-auto"><a class="navbar-brand" href="{{ route('shops.shopList') }}">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
@@ -43,7 +54,7 @@
                             <img class="img-fluid" src="assets/img/portfolio/sklep.jpg" style="height:257px; width:370px" alt="..." /></a>
                         </div>
                     </div>
-                    <!-- Portfolio Item 2-->
+                    <!-- wydatek Item 2-->
                     <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item mx-auto"><a class="navbar-brand" href="{{ route('expenses.expensesList') }}">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">

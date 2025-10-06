@@ -11,8 +11,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.form')}}">Dodaj Sklep</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.shopList')}}">Lista Sklepów</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.form')}}">Dodaj Użytkownika</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.shopList')}}">Lista Użytkowników</a></li>
                         
                     </ul>
                 </div>
@@ -43,16 +43,16 @@
   </thead>
   <tbody>
     
-    @foreach($shops as $shop)
+    @foreach($customers as $customer)
     <tr>
-      <td scope="row">{{$shop->id}}</td>
-      <td>{{$shop->shop_name}}</td>
+      <td scope="row">{{$customer->id}}</td>
+      <td>{{$customer->name}}</td>
       <td>
-        <a href="{{route('shops.edit',$shop->id)}}" class="btn btn-primary btn-sm">Edytuj</a>
-        <form action="{{route('shops.destroy',$shop->id)}}" method="POST" style="display:inline;">
+        <a href="{{route('customers.edit',$customer->id)}}" class="btn btn-primary btn-sm">Edytuj</a>
+        <form action="{{route('customers.destroy',$customer->id)}}" method="POST" style="display:inline;">
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Czy na pewno chcesz usunąć ten sklep?')">Usuń</button>
+          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Czy na pewno chcesz usunąć tego użytkownika?')">Usuń</button>
         </form>
       </td>  
        </tr>
