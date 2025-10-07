@@ -11,8 +11,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.form')}}">Dodaj Użytkownika</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.shopList')}}">Lista Użytkowników</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('customers.form')}}">Dodaj Użytkownika</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('customers.customers')}}">Lista Użytkowników</a></li>
                         
                     </ul>
                 </div>
@@ -49,7 +49,7 @@
       <td>{{$customer->name}}</td>
       <td>
         <a href="{{route('customers.edit',$customer->id)}}" class="btn btn-primary btn-sm">Edytuj</a>
-        <form action="{{route('customers.destroy',$customer->id)}}" method="POST" style="display:inline;">
+        <form action="{{route('customers.delete',$customer->id)}}" method="POST" style="display:inline;">
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Czy na pewno chcesz usunąć tego użytkownika?')">Usuń</button>

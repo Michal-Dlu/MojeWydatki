@@ -47,11 +47,7 @@ class ExpensesController extends Controller
         $month = old('month', now()->month);
         $year = old('year', now()->year);
         
-      //  $month = $request->input('month',now()->month);
-        //$year = $request->input('year',now()->year);
-      //  $selectedYear = old('year', now()->year);
-      //  $selectedMonth = old('month', now()->month);
-       // $selectedShop = old('sklep', '0');    
+       
        $sklep = $request->input('sklep');
         $shops = \App\Models\Shop::all();
 

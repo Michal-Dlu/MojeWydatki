@@ -4,15 +4,15 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="{{route('index')}}">Moje Wydatki</a>
+                <a class="navbar-brand" href="{{route('index')}}"><-Moje Wydatki</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.form')}}">Dodaj Sklep</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.shopList')}}">Lista Sklepów</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('customers.form')}}">Dodaj użytkownika</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('customers.customers')}}">Lista użytkowników</a></li>
                         
                     </ul>
                 </div>
@@ -22,7 +22,7 @@
         <section class="masthead page-section" id="contact">
             <div class="container">
                 <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Dodaj nowy sklep</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Dodaj nowego użytkownika</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -39,21 +39,17 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
                         <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="{{route('shops.store')}}"   >
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="{{route('customers.store')}}"   >
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="shop_name" type="text" name="shop_name" placeholder="Wpisz nazwę sklepu" />
-                                <label for="shop_name">Nazwa sklepu</label>
-                                <div class="invalid-feedback" data-sb-feedback="Nazwa skepu jest wymagana">Nazwa sklepu jest wymagana</div>
+                                <input class="form-control" id="name" type="text" name="name" placeholder="Wpisz nazwę użytkownika" />
+                                <label for="name">Nazwa użytkownika</label>
+                                <div class="invalid-feedback" data-sb-feedback="Nazwa skepu jest wymagana">Nazwa użytkownika jest wymagana</div>
                             </div>
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="customer_id" id="customer_id">
-                                <option selected>Wybierz użytkownika</option>
-                                @foreach($customers as $customer)
-                                    <option value="{{$customer->id}}">{{$customer->name}}</option>
-                                @endforeach
+                      
                             @csrf
                             <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Zapisz sklep</button>
+                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Zapisz użytkownika</button>
                         </form>
                     </div>
                 </div>

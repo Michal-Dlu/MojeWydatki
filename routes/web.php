@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CustomersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\ShopsController;
+
 
 
 Route::get('/index', function() {
@@ -20,9 +22,9 @@ Route::get('/expenses/form', [ExpensesController::class, 'create'])->name('expen
 Route::post('/expenses/zapisz', [ExpensesController::class, 'store'])->name('expenses.store');
 Route::post('/expenses/suma', [ExpensesController::class, 'suma'])->name('expenses.suma'); 
 
-Route::get('/customers/customers', [\App\Http\Controllers\CustomersController::class, 'list'])->name('customers.customers');
-Route::get('/customers/form', [\App\Http\Controllers\CustomersController::class, 'create'])->name('customers.form');
-Route::post('/customers/zapisz', [\App\Http\Controllers\CustomersController::class, 'store'])->name('customers.store');
-Route::get('/customers/edytuj/{id}', [\App\Http\Controllers\CustomersController::class, 'edit'])->name('customers.edit');
-Route::put('/customers/aktualizuj/{id}', [\App\Http\Controllers\CustomersController::class, 'update'])->name('customers.update');
-Route::delete('/customers/usun/{id}', [\App\Http\Controllers\CustomersController::class, 'destroy'])->name('customers.destroy');
+Route::get('/customers/customers', [CustomersController::class, 'list'])->name('customers.customers');
+Route::get('/customers/form', [CustomersController::class, 'create'])->name('customers.form');
+Route::post('/customers/zapisz', [CustomersController::class, 'store'])->name('customers.store');
+Route::get('/customers/edytuj/{id}', [CustomersController::class, 'edit'])->name('customers.edit');
+Route::put('/customers/aktualizuj/{id}', [CustomersController::class, 'update'])->name('customers.update');
+Route::delete('/customers/usun/{id}', [CustomersController::class, 'delete'])->name('customers.delete');
