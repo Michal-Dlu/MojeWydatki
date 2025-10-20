@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('expenses', function (Blueprint $table) {
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('set null');
+        Schema::table('shops', function (Blueprint $table) {
+                
+            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
+            $table->unique(['sklep', 'customer_id']);
         });
     }
 
@@ -21,8 +23,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('expenses', function (Blueprint $table) {
+        Schema::table('shops', function (Blueprint $table) {
             $table->dropForeign(['customer_id']);
+            $table->dropUnique(['sklep', 'customer_id']);
+            $table->dropColumn('customer_id');
         });
     }
 };

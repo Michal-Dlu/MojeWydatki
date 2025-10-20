@@ -10,7 +10,7 @@ class CustomersController extends Controller
 {
     public function list()
     {
-       $customers = \App\Models\Customer::all();
+       $customers = Customer::all();
        
         return view('customers.customers', compact('customers'));
     }
