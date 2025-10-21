@@ -27,10 +27,11 @@ Aby uruchomić ten projekt, musisz mieć zainstalowane:
 ## Instalacja
 
 1. **Sklonuj repozytorium**:
-
    ```bash
    git clone https://github.com/TwójUżytkownik/Moje_wydatki.git
+   
 2. W terminalu wejdź do katalogu projektu: cd Moje_wydatki
+
 3. Zainstaluj zależności PHP (Composer):
 ```bash
 composer install
