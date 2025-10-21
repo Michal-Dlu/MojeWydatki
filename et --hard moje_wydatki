@@ -1,0 +1,243 @@
+[33mcommit 87c9a90e86d3c78546fc4a5f46db21d7f6848af4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mpr/6582[m[33m, [m[1;31mgithub-desktop-imliam/user-helper[m[33m)[m
+Author: Liam Hammett <liamhammett@gmail.com>
+Date:   Tue Mar 18 10:11:46 2025 +0000
+
+    Remove unused namespace
+
+[33mcommit a0a93a98d6419d43549aa41cae4d5fc4f99141ab[m
+Author: Liam Hammett <liamhammett@gmail.com>
+Date:   Sat Mar 15 23:30:59 2025 +0000
+
+    Style fixes
+
+[33mcommit 762afbcc9a8fc1fa1f9d8ab4233063507998df6e[m
+Author: Liam Hammett <liamhammett@gmail.com>
+Date:   Sat Mar 15 17:23:26 2025 +0000
+
+    Autoload new bootstrap/helpers.php file and add user() helper function
+
+[33mcommit 8402e5b6a253699a30c11491424a275f33c83bac[m
+Author: Abdelmajid Aouby <56534840+abdel-aouby@users.noreply.github.com>
+Date:   Mon Mar 10 18:22:43 2025 +0100
+
+    Bump axios from 1.7.9 to 1.8.2 (#6572)
+
+[33mcommit 3549033ac7df3757d068b1eec339394514afbb52[m
+Author: Ahmed Alaa <92916738+AhmedAlaa4611@users.noreply.github.com>
+Date:   Mon Mar 10 19:07:54 2025 +0200
+
+    [12.x] Refactor: Structural improvement for clarity (#6574)
+    
+    * Structural improvement for clarity
+    
+    * Update logging.php
+    
+    ---------
+    
+    Co-authored-by: Taylor Otwell <taylor@laravel.com>
+
+[33mcommit 7d1dcad7712eae57b9cb336294f6ae4b67ae6ca1[m
+Author: Ahmed Alaa <92916738+AhmedAlaa4611@users.noreply.github.com>
+Date:   Fri Mar 7 17:13:31 2025 +0200
+
+    Improves clarity in app.css file (#6569)
+
+[33mcommit c1f2608e692668f3afeda4aba9418929e60c849d[m
+Author: Anders Jenbo <anders@jenbo.dk>
+Date:   Wed Mar 5 17:07:53 2025 +0100
+
+    Remove reverted change from CHANGELOG.md (#6565)
+
+[33mcommit 27348b7c9030388a2db7be57c3775fc9fd2a1ced[m
+Author: Taylor Otwell <taylor@laravel.com>
+Date:   Tue Mar 4 16:07:15 2025 -0600
+
+    remove change for now
+
+[33mcommit 661e56994d7b159c0525a894006246c50abb57b9[m
+Author: taylorotwell <463230+taylorotwell@users.noreply.github.com>
+Date:   Tue Mar 4 16:28:45 2025 +0000
+
+    Update CHANGELOG
+
+[33mcommit 139067230229d16805cf5bd865acb8a9b59ab6b9[m[33m ([m[1;33mtag: [m[1;33mv12.0.2[m[33m)[m
+Author: Anders Jenbo <anders@jenbo.dk>
+Date:   Tue Mar 4 16:48:56 2025 +0100
+
+    feat: add type hints for $this in routes/console.php (#6559)
+    
+    * feat: add type hints for $this in routes/console.php
+    
+    * Update console.php
+    
+    * Update console.php
+    
+    ---------
+    
+    Co-authored-by: Taylor Otwell <taylor@laravel.com>
+
+[33mcommit 540728ed96d84896c6d8c3ad263d64af2db831af[m
+Author: Nico Deblauwe <nico@bluepundit.eu>
+Date:   Fri Feb 28 01:27:31 2025 +0700
+
+    Switch to `php artisan test` to make it work out of the box (#6555)
+
+[33mcommit bd44e4a0ce6e767a10c9b55a61feaaa255f1c75b[m
+Author: taylorotwell <463230+taylorotwell@users.noreply.github.com>
+Date:   Mon Feb 24 15:41:22 2025 +0000
+
+    Update CHANGELOG
+
+[33mcommit c7e8fc4fda85fdff06f04239c64ae4f7df98f933[m[33m ([m[1;33mtag: [m[1;33mv12.0.1[m[33m)[m
+Author: Pieter Willekens <git@pataar.nl>
+Date:   Mon Feb 24 16:40:17 2025 +0100
+
+    [12.x] prefer stable stability (#6548)
+    
+    This feels as a leftover from the dev branch. But if I'm wrong, feel free to close this PR.
+
+[33mcommit fd51890716808d984eb467cc668b5b3a247161da[m[33m ([m[1;33mtag: [m[1;33mv12.0.0[m[33m)[m
+Author: StyleCI Bot <bot@styleci.io>
+Date:   Sun Feb 23 22:49:41 2025 +0000
+
+    Apply fixes from StyleCI
+
+[33mcommit 1b8506b0a06807ef2354cd464762e3169824942e[m
+Author: Taylor Otwell <taylor@laravel.com>
+Date:   Sun Feb 23 16:49:25 2025 -0600
+
+    update fonts
+
+[33mcommit ab101086b8fdcd669cd28d179a5c7b373ac47986[m
+Author: Tony Lea <tony@devdojo.com>
+Date:   Sat Feb 22 11:55:05 2025 -0500
+
+    Adding new laravel welcome (#6546)
+
+[33mcommit 2a19af7a6dc709ec7c88d4aabbe01045aa553218[m
+Merge: 29037b32 ecf6de49
+Author: Taylor Otwell <taylor@laravel.com>
+Date:   Thu Feb 20 14:53:58 2025 -0600
+
+    Merge branch '11.x'
+
+[33mcommit ecf6de4992d70dd37c21676be6b8ba4743151e63[m[33m ([m[1;31morigin/11.x[m[33m)[m
+Author: James King <james@jamesking.dev>
+Date:   Tue Feb 18 15:12:59 2025 +0000
+
+    Don't set CACHE_PREFIX to empty string by default (#6542)
+    
+    Setting this to an empty string by default overrides the default behaviour of using APP_NAME in the cache config file, this leads to unintended consequences if this has been blindly copied into the app's main .env file without setting a value
+
+[33mcommit 29037b320b343fa8e9b5616b7231d67763f9e9ef[m
+Merge: 8c396f12 79a94de4
+Author: Mior Muhammad Zaki <crynobone@gmail.com>
+Date:   Sat Feb 15 12:31:15 2025 +0800
+
+    Merge branch '11.x'
+    
+    Signed-off-by: Mior Muhammad Zaki <crynobone@gmail.com>
+
+[33mcommit 8c396f12c8aba4f511d73a0d6c28acd05e0e2334[m
+Author: Jason McCreary <jason@pureconcepts.net>
+Date:   Fri Feb 14 10:16:25 2025 -0500
+
+    Re-add nunomaduro/collision (#6539)
+    
+    * Re-add nunomaduro/collision
+    
+    * Update composer.json
+    
+    ---------
+    
+    Co-authored-by: Taylor Otwell <taylor@laravel.com>
+
+[33mcommit 79a94de4dd55e151987a1a7c69a161d3666fa889[m
+Author: Andrew Brown <browner12@gmail.com>
+Date:   Wed Feb 12 10:13:57 2025 -0600
+
+    remove `APP_TIMEZONE` environment variable (#6536)
+    
+    force the timezone to be defined in the config file, rather than deferring to an environment variable.
+    
+    IMO having the timezone dependent on an environment variable adds an unnecessary amount of risk for your average user who may be unaware of the effects from changing this value.
+    
+    some scenarios where this could cause issues:
+    
+    - devs set this value to their local timezone on their local dev machines, and they are writing `Carbon:create()` commands or similar that now are working only under the assumption of that timezone value
+    - you have multiple production servers setup across the country and each has their own timezone value according to their location, but they all talk to a central database. now the database is loaded with mixed timezone variables
+    
+    having an explicit value defined once for the application removes these risks.
+    
+    reverts part of #6188
+
+[33mcommit 6f1ebe26a49dc76cd922f7dde481acc56ab5e6f8[m
+Author: Mior Muhammad Zaki <crynobone@gmail.com>
+Date:   Wed Feb 12 09:50:55 2025 +0800
+
+    chore: Update `update-changelog.yml`
+
+[33mcommit 55738c0c4e17e6eeff52f5486293e5f5e6be511c[m
+Author: Taylor Otwell <taylor@laravel.com>
+Date:   Tue Feb 11 11:56:59 2025 -0600
+
+    add REDIS_PERSISTENT env var
+
+[33mcommit a8b5e075228a28344876ccedd09bc0ba850b621c[m
+Author: Mior Muhammad Zaki <crynobone@gmail.com>
+Date:   Tue Feb 11 21:37:43 2025 +0800
+
+    chore: update changelog CI permission
+
+[33mcommit cf5aed8c2e7fe9ae038e76ccd0ac8de1cdc3dded[m
+Author: Anders Jenbo <anders@jenbo.dk>
+Date:   Wed Feb 5 12:01:25 2025 +0100
+
+    Improve static analysis by adding type hints for $app in artisan and public/index.php (#6531)
+    
+    * feat: add type hints for $app in artisan and public/index.php
+    
+    Added PHPDoc type hints for the $app variable to improve static analysis
+    support in PHPStan and PHPStorm. This prevents tools from incorrectly
+    flagging the variable and enhances developer experience.
+    
+    No functional changes; only improves code readability and IDE support.
+    
+    * Update artisan
+    
+    * Update index.php
+    
+    ---------
+    
+    Co-authored-by: Taylor Otwell <taylor@laravel.com>
+
+[33mcommit d24cb962ce8cf59ba4cb1a0a061bd499a5050d11[m
+Author: Mior Muhammad Zaki <crynobone@gmail.com>
+Date:   Sat Feb 1 19:37:08 2025 +0800
+
+    [12.x] Update skeleton dependencies (#6532)
+    
+    Signed-off-by: Mior Muhammad Zaki <crynobone@gmail.com>
+
+[33mcommit c6dcaf788c63387f6086cae6cba974f2b89e43a9[m
+Author: Ngô Quốc Đạt <datlechin@gmail.com>
+Date:   Sat Feb 1 00:34:00 2025 +0700
+
+    Upgrade to Tailwind CSS v4.0 (#6523)
+    
+    * Upgrade to Tailwind CSS v4.0
+    
+    * Upgrade to Tailwind CSS 4
+    
+    * Upgrade to Tailwind CSS 4
+    
+    * Upgrade to Tailwind CSS 4
+    
+    * Upgrade to Tailwind CSS 4
+    
+    * Upgrade to Tailwind CSS v4.0
+    
+    * remove compatible styles
+    
+    Co-authored-by: Julius Kiekbusch <contact@julius-kiekbusch.de>
+    
