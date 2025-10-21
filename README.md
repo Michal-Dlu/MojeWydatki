@@ -35,10 +35,12 @@ Aby uruchomić ten projekt, musisz mieć zainstalowane:
 3. Zainstaluj zależności PHP (Composer):
 ```bash
 composer install
+
 4. Skonfiguruj plik .env
 Skopiuj plik .env.example do .env:
 ```bash
 cp .env.example .env
+
 5.W pliku .env ustaw dane do połączenia z bazą danych, np.:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -46,6 +48,7 @@ DB_PORT=3306
 DB_DATABASE=moje_wydatki
 DB_USERNAME=root
 DB_PASSWORD=
+
 6. Wykonaj migrację w terminalu:
 ```bash
 php artisan migrate
