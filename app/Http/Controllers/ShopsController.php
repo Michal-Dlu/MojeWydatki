@@ -72,9 +72,7 @@ class ShopsController extends Controller
     {
         $shops = Shop::where('customer_id', $customer_id)->get();
 
-        if ($shops->isEmpty()) {
-            return response()->json(['error' => 'Brak sklepów dla tego użytkownika'], 404);
-        }
+   
 
         return response()->json([
             'shops' => $shops->map(function($shop) {
