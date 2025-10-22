@@ -23,7 +23,7 @@
         <section class="masthead page-section" id="contact">
             <div class="container">
                 <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Dodaj nowy wydatek</h2>
+                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{$expense->customer->name}} Edytujesz Wydatek {{$expense->sklep}}</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -34,8 +34,10 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
                        
-                        <form id="contactForm" method="POST" action="{{ route('expenses.store') }}">
+                        <form id="contactForm" method="POST" action="{{ route('expenses.update',['id'=>$expense->id]) }}">                      
                             @csrf                     
+                            @method('PUT')
+                            
                             @error('sklep')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -48,29 +50,29 @@
                             @error('customer_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-                           
+
                                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="customer_id" id="customer_id"  >
                                 <option >Wybierz użytkownika</option>
-                                @foreach($customers as $customer)
-                                <option value="{{$customer->id}}">{{$customer->name}}</option>
+                                @foreach($customers as $customer)   
+                                <option value="{{$customer->id}}"  selected = "{{$customerName}}"  >{{$customer->name}}</option>
                                 @endforeach
                                 </select>
                                 <div class="invalid-feedback" data-sb-feedback="customer_id:required">Użytkownik jest wymagany</div>   
                                                   
                                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="sklep" id="shop_name" >
-                                <option value="">Wybierz sklep</option>                               
+                                <option value="{{$expense->sklep}}" selected = $sklepName>{{$sklepName}}</option>                               
                                                            
                                 </select>
                              
                             </div>
                          
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="kwota" type="text" name="kwota" placeholder="100,00"  />
+                                <input class="form-control" id="kwota" type="text" name="kwota" placeholder="100,00" value="{{$expense->kwota}}" />
                                 <label for="kwota">Kwota</label>                               
                             </div>
                            
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="date" type="date" name="data_zakupu" placeholder="" value="{{\Carbon\Carbon::now()->format('Y-m-d')}}" />
+                                <input class="form-control" id="date" type="date" name="data_zakupu" placeholder="" value="{{$expense->data_zakupu}}" />
                                 <label for="date">Data_zakupu</label>                               
                             </div>
                   

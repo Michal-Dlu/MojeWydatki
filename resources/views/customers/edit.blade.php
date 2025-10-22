@@ -9,10 +9,10 @@
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
-                <div id="navbarResponsive">
+                <div  id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.form')}}">Dodaj Sklep</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('shops.filter')}}">Lista Sklepów</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('customers.form')}}">Dodaj Użytkownika</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('customers.customers')}}">Lista Użytkowników</a></li>
                         
                     </ul>
                 </div>
@@ -22,7 +22,7 @@
         <section class="masthead page-section" id="contact">
             <div class="container">
                 <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Edytujesz sklep {{$shop->name}}</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Edytujesz Użytkownika {{$customer->id}}</h2>
                 <!-- Icon Divider-->
                 
                 <div class="divider-custom">
@@ -30,32 +30,37 @@
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Contact Section Form-->
+           
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
-                    
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="{{route('shops.update',['id'=>$shop->id])}}"   >
+                     
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="{{route('customers.update',['id'=>$customer->id])}}"   >
                             <!-- Name input-->
                               @csrf
                              @method('PUT')
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="shop_name" type="text" name="sklep" value="{{$shop->sklep}}" placeholder="Wpisz nazwę sklepu" />
-                                <label for="sklep">Nazwa sklepu</label>
-                                
+                                <input class="form-control" id="name" type="text" name="name" value="{{$customer->name}}" placeholder="Wpisz nazwę użytkownika" />
+                                <label for="name">Nazwa Użytkownika</label>
+                                <div class="invalid-feedback" data-sb-feedback="Nazwa użytkownika jest wymagana">Nazwa użytkownika jest wymagana</div>
                             </div>
-
+                      
+                           
                             <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Zapisz sklep</button>
+                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Zapisz Użytkownika</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Bootstrap core JS-->
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
         <!-- Core theme JS-->
         <script src="{{asset('js/scripts.js')}}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
