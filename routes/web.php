@@ -5,10 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\ShopsController;
 
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get('/index', function() {
     return view('index'); })->name('index');  
 
-//Route::get('/shops/listaSklepow', [ShopsController::class, 'list'])->name('shops.shopList');
+
 Route::get('/shops/formularz', [ShopsController::class, 'create'])->name('shops.form');
 Route::post('/shops/zapisz', [ShopsController::class, 'store'])->name('shops.store');
 Route::get('/shops/edytuj/{id}', [ShopsController::class, 'edit'])->name('shops.edit');
