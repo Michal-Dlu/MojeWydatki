@@ -31,9 +31,7 @@ Aby uruchomić ten projekt, musisz mieć zainstalowane:
    ```bash
    git clone https://github.com/TwójUżytkownik/Moje_wydatki.git
 2. W terminalu wejdź do katalogu projektu: cd Moje_wydatki
-. Wykonaj migrację w terminalu:
-```bash
-php artisan migrate
+
 3. Zainstaluj zależności PHP (Composer):
 ```bash
 composer install
@@ -48,6 +46,10 @@ DB_PORT=3306
 DB_DATABASE=moje_wydatki
 DB_USERNAME=root
 DB_PASSWORD=
+6.. Wykonaj migrację w terminalu:
+```bash
+php artisan migrate
+Twoja aplikacja będzie dostępna pod adresem: http://localhost:8000
 
 
 
