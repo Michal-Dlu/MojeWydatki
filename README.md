@@ -5,7 +5,7 @@
 2. [Instalacja](#instalacja)
 3. [Użycie](#użycie)
 4. [Przykłady](#przykłady)
-
+ 
 
 ## Opis
 
