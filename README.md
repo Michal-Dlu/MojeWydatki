@@ -27,18 +27,20 @@ Aby uruchomić ten projekt, musisz mieć zainstalowane:
 ## Instalacja
 
 1. **Sklonuj repozytorium**:
-
    ```bash
    git clone https://github.com/TwójUżytkownik/Moje_wydatki.git
+   
 2. W terminalu wejdź do katalogu projektu: cd Moje_wydatki
 
 3. Zainstaluj zależności PHP (Composer):
 ```bash
 composer install
+
 4. Skonfiguruj plik .env
 Skopiuj plik .env.example do .env:
 ```bash
 cp .env.example .env
+
 5.W pliku .env ustaw dane do połączenia z bazą danych, np.:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -51,6 +53,9 @@ DB_PASSWORD=
 php artisan migrate
 Twoja aplikacja będzie dostępna pod adresem: http://localhost:8000
 
+6. Wykonaj migrację w terminalu:
+```bash
+php artisan migrate
 
 
 
