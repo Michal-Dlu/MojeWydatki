@@ -1,6 +1,6 @@
   @extends('layouts.app')
         @section('content')   
-      
+   
       
           <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
               <div class="container">
@@ -17,24 +17,28 @@
                   </div>
             </div>
           </nav>
-                  @if(session()->has('success'))
-
-    {{ session()->get('success') }}
-        <button type="button" class="btn-close"  data-bs-dismiss="alert" aria-label="Close">
-          @endif
+  
         
           <!-- Portfolio Section-->
           <section class="masthead page-section portfolio" id="portfolio">
+   
               <div class="container">
+   
                   <!-- Portfolio Section Heading-->
                   <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Lista Użytkowników</h2>
-                  <!-- Icon Divider-->
+                  <!-- Icon Divider-->                                      @if(session()->has('success'))
+                 <div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ session()->get('success') }}
+      <button type="button" class="btn-close"  data-bs-dismiss="alert" aria-label="Close">
+        </div>
+        @endif
                   <div class="divider-custom">
                       <div class="divider-custom-line"></div>
                       <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                       <div class="divider-custom-line"></div>
                   </div>
                   <!-- Portfolio Grid Items-->
+     
                 
   <table class="table table-hover" class="table table-sm">
     <thead>
