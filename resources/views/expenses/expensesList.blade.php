@@ -5,7 +5,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="{{route('index')}}">Moje Wydatki</a>
+                <a class="navbar-brand" href="{{route('index')}}">Powrót do menu</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -71,8 +71,9 @@
 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
     Lista Wydatków 
  
-    @if($customer)
-        {{ \App\Models\Customer::find($customer_id)->name ?? '' }} <!-- Jeśli klient jest wybrany, wyświetl jego nazwisko -->
+    @if(isset($customer_id))
+        <!--{{ \App\Models\Customer::find($customer_id)->name ?? '' }}  Jeśli klient jest wybrany, wyświetl jego nazwisko -->
+       {{ $customer->name ?? '' }}  
   
     @endif
 </h2>
