@@ -35,7 +35,7 @@ jobs:
     services:
       mysql:
         image: mysql:8.0
-        options: --health-cmd="mysqladmin ping --silent" --health-timeout=5s --health-interval=5s --health-retries=5
+        options: --health-cmd="mysqladmin ping --silent" --health-timeout=30s --health-interval=10s --health-retries=12
         ports:
           - 3306:3306
         env:
@@ -88,11 +88,15 @@ jobs:
         run: |
           until mysqladmin ping -h127.0.0.1 --silent; do
             echo "Waiting for MySQL..."
-            sleep 2
+            sleep 10
           done
+
+      - name: Check MySQL container logs
+        run: |
+          docker ps -q --filter "ancestor=mysql:8.0" | xargs -I {} docker logs {} || echo "No MySQL container found"
 
       - name: Run migrations
         run: php artisan migrate --force --no-interaction
 
       - name: Execute tests
-        run: php artisan test 
+        run: php artisan test
