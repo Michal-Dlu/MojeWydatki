@@ -68,18 +68,18 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-interaction --no-progress
+        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
 
       - name: Prepare environment
         run: |
           cp .env.example .env
-          # Upewnij się, że CI używa MySQL
           sed -i 's/^DB_CONNECTION=.*/DB_CONNECTION=mysql/' .env || true
           sed -i 's/^DB_HOST=.*/DB_HOST=127.0.0.1/' .env || true
           sed -i 's/^DB_PORT=.*/DB_PORT=3306/' .env || true
           sed -i 's|^DB_DATABASE=.*|DB_DATABASE=test_database|' .env || true
           sed -i 's/^DB_USERNAME=.*/DB_USERNAME=root/' .env || true
           sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=/' .env || true
+          cat .env
 
       - name: Generate app key
         run: php artisan key:generate --ansi
@@ -88,11 +88,11 @@ jobs:
         run: |
           until mysqladmin ping -h127.0.0.1 --silent; do
             echo "Waiting for MySQL..."
-            sleep 2
+            sleep 5
           done
 
       - name: Run migrations
         run: php artisan migrate --force --no-interaction
 
       - name: Execute tests
-        run: php artisan test 
+        run: php artisan test
