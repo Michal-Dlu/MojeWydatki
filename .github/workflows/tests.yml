@@ -35,7 +35,7 @@ jobs:
     services:
       mysql:
         image: mysql:8.0
-        options: --health-cmd="mysqladmin ping --silent" --health-timeout=5s --health-interval=5s --health-retries=5
+        options: --health-cmd="mysqladmin ping --silent" --health-timeout=30s --health-interval=10s --health-retries=12
         ports:
           - 3306:3306
         env:
@@ -68,18 +68,18 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
+        run: composer install --prefer-dist --no-interaction --no-progress
 
       - name: Prepare environment
         run: |
           cp .env.example .env
+          # Upewnij się, że CI używa MySQL
           sed -i 's/^DB_CONNECTION=.*/DB_CONNECTION=mysql/' .env || true
           sed -i 's/^DB_HOST=.*/DB_HOST=127.0.0.1/' .env || true
           sed -i 's/^DB_PORT=.*/DB_PORT=3306/' .env || true
           sed -i 's|^DB_DATABASE=.*|DB_DATABASE=test_database|' .env || true
           sed -i 's/^DB_USERNAME=.*/DB_USERNAME=root/' .env || true
           sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=/' .env || true
-          cat .env
 
       - name: Generate app key
         run: php artisan key:generate --ansi
@@ -88,8 +88,12 @@ jobs:
         run: |
           until mysqladmin ping -h127.0.0.1 --silent; do
             echo "Waiting for MySQL..."
-            sleep 5
+            sleep 10
           done
+
+      - name: Check MySQL container logs
+        run: |
+          docker ps -q --filter "ancestor=mysql:8.0" | xargs -I {} docker logs {} || echo "No MySQL container found"
 
       - name: Run migrations
         run: php artisan migrate --force --no-interaction
