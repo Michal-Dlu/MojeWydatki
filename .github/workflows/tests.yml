@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-name: Testy Laravel + MySQL
-=======
 name: Laravel + MySQL Tests
->>>>>>> 566fee05 (Ustawienia Laravel + MySQL, testy działają lokalnie)
 
 on:
   push:
@@ -14,19 +10,12 @@ jobs:
   laravel-tests:
     runs-on: ubuntu-latest
 
-<<<<<<< HEAD
-=======
     # Uruchomienie MySQL w kontenerze
->>>>>>> 566fee05 (Ustawienia Laravel + MySQL, testy działają lokalnie)
     services:
       mysql:
         image: mysql:8
         env:
-<<<<<<< HEAD
-          MYSQL_ROOT_PASSWORD: root   # hasło dla root
-=======
           MYSQL_ROOT_PASSWORD: root
->>>>>>> 566fee05 (Ustawienia Laravel + MySQL, testy działają lokalnie)
           MYSQL_DATABASE: test_db
         options: >-
           --health-cmd="mysqladmin ping -uroot -proot > /dev/null 2>&1"
@@ -35,19 +24,11 @@ jobs:
           --health-retries=5
 
     steps:
-<<<<<<< HEAD
-      # 1️⃣ Pobranie kodu
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      # 2️⃣ Instalacja PHP + potrzebnych rozszerzeń
-=======
       # 1️⃣ Pobranie repozytorium
       - name: Checkout repo
         uses: actions/checkout@v3
 
       # 2️⃣ PHP 8.4 + wymagane rozszerzenia
->>>>>>> 566fee05 (Ustawienia Laravel + MySQL, testy działają lokalnie)
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -62,22 +43,6 @@ jobs:
       - name: Set up .env
         run: cp .env.example .env
 
-<<<<<<< HEAD
-      # 5️⃣ Skonfigurowanie bazy w .env
-      - name: Configure database
-        run: |
-          php -r "file_put_contents('.env', str_replace('DB_DATABASE=laravel', 'DB_DATABASE=test_db', file_get_contents('.env')));"
-          php -r "file_put_contents('.env', str_replace('DB_USERNAME=root', 'DB_USERNAME=root', file_get_contents('.env')));"
-          php -r "file_put_contents('.env', str_replace('DB_PASSWORD=', 'DB_PASSWORD=root', file_get_contents('.env')));"
-
-      # 6️⃣ Migracje bazy danych
-      - name: Run migrations
-        run: php artisan migrate --force
-
-      # 7️⃣ Uruchomienie testów
-      - name: Run tests
-        run: php artisan test
-=======
       # 5️⃣ Nadpisanie zmiennych DB w .env dla CI
       - name: Configure database
         run: |
@@ -95,4 +60,3 @@ jobs:
       # 7️⃣ Uruchomienie testów Laravel
       - name: Run tests
         run: php artisan test --parallel
->>>>>>> 566fee05 (Ustawienia Laravel + MySQL, testy działają lokalnie)
