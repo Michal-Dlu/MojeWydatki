@@ -55,6 +55,9 @@ class Expense extends Model
                 return $query->where('customer_id', $customer_id);
             }
         });
+       $query->orderBy('data_zakupu', 'desc');
+
+         
 
     return $query->get();
 }

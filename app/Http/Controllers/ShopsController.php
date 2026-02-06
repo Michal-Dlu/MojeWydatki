@@ -70,7 +70,7 @@ class ShopsController extends Controller
     } 
     public function getShopsByCustomer($customer_id)
     {
-        $shops = Shop::where('customer_id', $customer_id)->get();
+        $shops = Shop::where('customer_id', $customer_id)->orderBy('sklep','asc')->get();
 
    
 

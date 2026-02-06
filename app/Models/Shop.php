@@ -32,6 +32,9 @@ class Shop extends Model
     // Statyczna metoda do pobierania sklepów dla danego klienta
     public static function getShopsByCustomer($customer_id)
     {
-        return self::where('customer_id', $customer_id)->get();
+        
+        return self::where('customer_id', $customer_id)
+        ->orderBy('sklep','asc')
+        ->get();
     }
 }
