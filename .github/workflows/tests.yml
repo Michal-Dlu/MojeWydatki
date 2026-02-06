@@ -17,10 +17,10 @@ jobs:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test_db
         options: >-
-          --health-cmd="mysqladmin ping -uroot -proot > /dev/null 2>&1"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
+          --health-cmd="mysqladmin ping -uroot -proot"
+          --health-interval=5s
+          --health-timeout=3s
+          --health-retries=10
 
     steps:
       # 1️⃣ Pobranie repozytorium
@@ -49,15 +49,19 @@ jobs:
           php -r "file_put_contents('.env', str_replace('DB_DATABASE=laravel', 'DB_DATABASE=test_db', file_get_contents('.env')));"
           php -r "file_put_contents('.env', str_replace('DB_USERNAME=root', 'DB_USERNAME=root', file_get_contents('.env')));"
           php -r "file_put_contents('.env', str_replace('DB_PASSWORD=', 'DB_PASSWORD=root', file_get_contents('.env')));"
-          php -r "file_put_contents('.env', str_replace('DB_HOST=127.0.0.1', 'DB_HOST=127.0.0.1', file_get_contents('.env')));"
+          php -r "file_put_contents('.env', str_replace('DB_HOST=127.0.0.1', 'DB_HOST=mysql', file_get_contents('.env')));"
           php -r "file_put_contents('.env', str_replace('DB_PORT=3306', 'DB_PORT=3306', file_get_contents('.env')));"
 
-      # 6️⃣ Czekanie aż MySQL będzie gotowy
-      - name: Wait for MySQL to be ready
+      # 6️⃣ Czekanie aż MySQL będzie gotowy (max 60 sekund)
+      - name: Wait for MySQL
         run: |
-          until mysqladmin ping -h "mysql" -u root -proot --silent; do
+          for i in {1..12}; do
+            if mysqladmin ping -hmysql -uroot -proot --silent; then
+              echo "MySQL is ready"
+              break
+            fi
             echo "Waiting for MySQL..."
-            sleep 2
+            sleep 5
           done
 
       # 7️⃣ Migracje bazy danych w CI
