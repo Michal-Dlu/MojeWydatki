@@ -55,7 +55,7 @@ jobs:
       # 6️⃣ Czekanie aż MySQL będzie gotowy
       - name: Wait for MySQL to be ready
         run: |
-          until mysqladmin ping -h "127.0.0.1" -u root -proot --silent; do
+          until mysqladmin ping -h "mysql" -u root -proot --silent; do
             echo "Waiting for MySQL..."
             sleep 2
           done
