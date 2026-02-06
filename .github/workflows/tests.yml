@@ -10,52 +10,49 @@ jobs:
   laravel-tests:
     runs-on: ubuntu-latest
 
-    # MySQL uruchamiany w kontenerze jako serwis
     services:
       mysql:
         image: mysql:8
         env:
-          MYSQL_ROOT_PASSWORD: ''      # root bez hasła
-          MYSQL_DATABASE: test_db      # nazwa bazy dla testów
-        ports:
-          - 3306:3306
+          MYSQL_ROOT_PASSWORD: root   # hasło dla root
+          MYSQL_DATABASE: test_db
         options: >-
-          --health-cmd="mysqladmin ping --silent"
+          --health-cmd="mysqladmin ping -uroot -proot > /dev/null 2>&1"
           --health-interval=10s
           --health-timeout=5s
-          --health-retries=3
+          --health-retries=5
 
     steps:
-      # Pobranie kodu
+      # 1️⃣ Pobranie kodu
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      # Instalacja PHP + potrzebnych rozszerzeń
+      # 2️⃣ Instalacja PHP + potrzebnych rozszerzeń
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
           extensions: mbstring, bcmath, pdo_mysql
 
-      # Instalacja zależności Composer
+      # 3️⃣ Instalacja zależności Composer
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist
 
-      # Skopiowanie przykładowego .env
+      # 4️⃣ Skopiowanie przykładowego .env
       - name: Set up .env
         run: cp .env.example .env
 
-      # Opcjonalnie, ustawienie danych do DB w .env (jeśli nie są już tam root + pusty password)
+      # 5️⃣ Skonfigurowanie bazy w .env
       - name: Configure database
         run: |
           php -r "file_put_contents('.env', str_replace('DB_DATABASE=laravel', 'DB_DATABASE=test_db', file_get_contents('.env')));"
           php -r "file_put_contents('.env', str_replace('DB_USERNAME=root', 'DB_USERNAME=root', file_get_contents('.env')));"
-          php -r "file_put_contents('.env', str_replace('DB_PASSWORD=', 'DB_PASSWORD=', file_get_contents('.env')));"
+          php -r "file_put_contents('.env', str_replace('DB_PASSWORD=', 'DB_PASSWORD=root', file_get_contents('.env')));"
 
-      # Migracje bazy danych
+      # 6️⃣ Migracje bazy danych
       - name: Run migrations
         run: php artisan migrate --force
 
-      # Uruchomienie testów
+      # 7️⃣ Uruchomienie testów
       - name: Run tests
         run: php artisan test
