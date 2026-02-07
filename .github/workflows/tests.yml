@@ -49,14 +49,12 @@ jobs:
       # 6️⃣ Poczekaj aż MySQL będzie gotowy
       - name: Wait for MySQL
         run: |
-          for i in {1..20}; do
-            if mysqladmin ping -hmysql -uroot -proot --silent; then
-              echo "MySQL is ready"
-              break
-            fi
-            echo "Waiting for MySQL..."
+          echo "Waiting for MySQL to be ready..."
+          until mysql -h 127.0.0.1 -P 3306 -uroot -proot -e "SELECT 1;" > /dev/null 2>&1; do
+            echo "MySQL not ready yet..."            
             sleep 3
           done
+          echo "MySQL is ready!"
 
       # 7️⃣ Sprawdź .env.testing
       - name: Show .env
