@@ -2,68 +2,68 @@ name: Laravel + MySQL Tests
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
 
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        php: [8.2, 8.3, 8.4]
-
     services:
       mysql:
-        image: mysql:8.0
+        image: mysql:8
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test_db
-        ports:
-          - 3306:3306
         options: >-
           --health-cmd="mysqladmin ping -uroot -proot"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
+          --health-interval=5s
+          --health-timeout=3s
+          --health-retries=10
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          persist-credentials: true
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 8.4
           extensions: mbstring, bcmath, pdo_mysql
 
-      - name: Install dependencies
-        run: composer install --no-interaction --prefer-dist
+      - name: Clear Composer cache
+        run: composer clear-cache
 
-      - name: Prepare Laravel
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Set up .env
+        run: cp .env.example .env
+
+      - name: Wait for MySQL
         run: |
-          cp .env.example .env
-          php artisan key:generate
+          for i in {1..12}; do
+            if mysqladmin ping -hmysql -uroot -proot --silent; then
+              echo "MySQL is ready"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 5
+          done
 
       - name: Run migrations
         env:
-          DB_CONNECTION: mysql
-          DB_HOST: mysql
-          DB_PORT: 3306
-          DB_DATABASE: test_db
-          DB_USERNAME: root
-          DB_PASSWORD: root
+          DB_HOST_LOCAL: mysql
+          DB_DATABASE_LOCAL: test_db
+          DB_USERNAME_LOCAL: root
+          DB_PASSWORD_LOCAL: root
         run: php artisan migrate --force
 
       - name: Run tests
         env:
-          DB_CONNECTION: mysql
-          DB_HOST: mysql
-          DB_PORT: 3306
-          DB_DATABASE: test_db
-          DB_USERNAME: root
-          DB_PASSWORD: root
+          DB_HOST_LOCAL: mysql
+          DB_DATABASE_LOCAL: test_db
+          DB_USERNAME_LOCAL: root
+          DB_PASSWORD_LOCAL: root
         run: php artisan test --parallel
