@@ -2,8 +2,7 @@ name: Laravel + MySQL Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
 
 jobs:
@@ -12,62 +11,53 @@ jobs:
 
     services:
       mysql:
-        image: mysql:8
+        image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test_db
-        options: >-
-          --health-cmd="mysqladmin ping -uroot -proot"
-          --health-interval=5s
-          --health-timeout=3s
-          --health-retries=10
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping -uroot -proot" --health-interval=10s --health-timeout=5s --health-retries=5
 
     steps:
-      # 1️⃣ Pobranie repozytorium
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      # 2️⃣ PHP 8.4 + wymagane rozszerzenia
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
-          extensions: mbstring, bcmath, pdo_mysql
+          extensions: mbstring, bcmath, pdo_mysql, redis  # dodaj co potrzebujesz
 
-      # 3️⃣ Instalacja zależności Composer
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
-      # 4️⃣ Skopiowanie przykładowego .env
-      - name: Set up .env
-        run: cp .env.example .env
-
-      # 5️⃣ Nadpisanie zmiennych DB w .env dla CI
-      - name: Configure database
+      - name: Prepare Laravel
         run: |
-          php -r "file_put_contents('.env', str_replace('DB_CONNECTION=sqlite', 'DB_CONNECTION=mysql', file_get_contents('.env')));"
-          php -r "file_put_contents('.env', str_replace('DB_DATABASE=laravel', 'DB_DATABASE=test_db', file_get_contents('.env')));"
-          php -r "file_put_contents('.env', str_replace('DB_USERNAME=root', 'DB_USERNAME=root', file_get_contents('.env')));"
-          php -r "file_put_contents('.env', str_replace('DB_PASSWORD=', 'DB_PASSWORD=root', file_get_contents('.env')));"
-          php -r "file_put_contents('.env', str_replace('DB_HOST=127.0.0.1', 'DB_HOST=mysql', file_get_contents('.env')));"
-          php -r "file_put_contents('.env', str_replace('DB_PORT=3306', 'DB_PORT=3306', file_get_contents('.env')));"
+          cp .env.example .env
+          php artisan key:generate --ansi
+          echo "APP_ENV=testing"           >> .env
+          echo "DB_CONNECTION=mysql"       >> .env
+          echo "DB_HOST=127.0.0.1"         >> .env
+          echo "DB_PORT=3306"              >> .env
+          echo "DB_DATABASE=test_db"       >> .env
+          echo "DB_USERNAME=root"          >> .env
+          echo "DB_PASSWORD=root"          >> .env
+          echo "CACHE_DRIVER=array"        >> .env
+          echo "QUEUE_CONNECTION=sync"     >> .env
 
-      # 6️⃣ Czekanie aż MySQL będzie gotowy (max 60 sekund)
-      - name: Wait for MySQL
-        run: |
-          for i in {1..12}; do
-            if mysqladmin ping -hmysql -uroot -proot --silent; then
-              echo "MySQL is ready"
-              break
-            fi
-            echo "Waiting for MySQL..."
-            sleep 5
-          done
-
-      # 7️⃣ Migracje bazy danych w CI
       - name: Run migrations
-        run: php artisan migrate --force
+        run: php artisan migrate --force --ansi
 
-      # 8️⃣ Uruchomienie testów Laravel
       - name: Run tests
-        run: php artisan test --parallel
+        run: php artisan test --parallel --ansi
