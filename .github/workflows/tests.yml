@@ -23,24 +23,30 @@ jobs:
           --health-retries=10
 
     steps:
-      - name: Checkout repo
+      # 1️⃣ Pobranie repozytorium
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Setup PHP 8.4 + wymagane rozszerzenia
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.4
           extensions: mbstring, bcmath, pdo_mysql
 
+      # 3️⃣ Wyczyść cache Composera
       - name: Clear Composer cache
         run: composer clear-cache
 
-      - name: Install dependencies
+      # 4️⃣ Instalacja zależności
+      - name: Install Composer dependencies
         run: composer install --no-progress --prefer-dist
 
+      # 5️⃣ Skopiowanie pliku .env.testing do .env
       - name: Set up .env
         run: cp .env.testing .env
 
+      # 6️⃣ Czekanie na uruchomienie MySQL
       - name: Wait for MySQL
         run: |
           for i in {1..12}; do
@@ -52,18 +58,10 @@ jobs:
             sleep 5
           done
 
+      # 7️⃣ Migracje bazy danych
       - name: Run migrations
-        env:
-          DB_HOST_LOCAL: mysql
-          DB_DATABASE_LOCAL: test_db
-          DB_USERNAME_LOCAL: root
-          DB_PASSWORD_LOCAL: root
         run: php artisan migrate:fresh --force --env=testing
 
+      # 8️⃣ Uruchomienie testów
       - name: Run tests
-        env:
-          DB_HOST_LOCAL: mysql
-          DB_DATABASE_LOCAL: test_db
-          DB_USERNAME_LOCAL: root
-          DB_PASSWORD_LOCAL: root
         run: php artisan test --parallel --env=testing
