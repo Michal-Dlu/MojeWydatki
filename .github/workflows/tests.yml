@@ -2,82 +2,61 @@ name: Laravel + MySQL Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
 
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
 
+    # 🔹 MySQL jako serwis
     services:
       mysql:
         image: mysql:8
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test_db
+        # Health check - GitHub Actions poczeka, aż kontener MySQL będzie gotowy
         options: >-
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -P 3306 -uroot -proot"
+          --health-cmd="mysqladmin ping -h localhost -uroot -proot"
           --health-interval=5s
           --health-timeout=3s
           --health-retries=20
 
+    # 🔹 Ustawienie zmiennych środowiskowych dla joba
     env:
-      # zmienne środowiskowe Laravel
+      APP_ENV: testing
+      APP_DEBUG: true
       DB_CONNECTION: mysql
-      DB_HOST: mysql
+      DB_HOST: mysql        # <- nazwa serwisu MySQL w Actions
       DB_PORT: 3306
       DB_DATABASE: test_db
       DB_USERNAME: root
       DB_PASSWORD: root
-      APP_ENV: testing
-      APP_DEBUG: true
 
     steps:
-      # 1️⃣ Checkout repo
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      # 1️⃣ Pobranie repo
+      - uses: actions/checkout@v4
 
-      # 2️⃣ Setup PHP
-      - name: Setup PHP 8.4
-        uses: shivammathur/setup-php@v2
+      # 2️⃣ PHP 8.4 + wymagane rozszerzenia
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: 8.4
           extensions: mbstring, bcmath, pdo_mysql
 
-      # 3️⃣ Install composer dependencies
-      - name: Install Composer dependencies
-        run: composer install --no-progress --prefer-dist
+      # 3️⃣ Instalacja zależności Composera
+      - run: composer install --no-progress --prefer-dist
 
-      # 4️⃣ Copy .env.testing to .env
-      - name: Setup .env
-        run: cp .env.testing .env
+      # 4️⃣ Skopiuj plik .env.testing do .env
+      - run: cp .env.testing .env
 
-      # 5️⃣ Generate app key
-      - name: Generate application key
-        run: php artisan key:generate --env=testing
+      # 5️⃣ Wygeneruj APP_KEY dla środowiska testing
+      - run: php artisan key:generate --env=testing
 
-      # 6️⃣ Wait for MySQL to be ready
-      - name: Wait for MySQL
-        run: |
-          echo "Waiting for MySQL to be ready..."
-          MAX_RETRIES=20
-          COUNT=0
-          until mysql -h mysql -P 3306 -uroot -proot -e "SELECT 1;" > /dev/null 2>&1; do
-            COUNT=$((COUNT+1))
-            if [ $COUNT -gt $MAX_RETRIES ]; then
-              echo "MySQL not ready after $MAX_RETRIES attempts, exiting..."
-              exit 1
-            fi
-            echo "MySQL not ready yet..."
-            sleep 3
-          done
-          echo "MySQL is ready!"
+      # ❌ KROK "WAIT FOR MYSQL" usunięty, GitHub Actions sam poczeka dzięki health check
 
-      # 7️⃣ Run migrations
-      - name: Run migrations
-        run: php artisan migrate:fresh --force --env=testing
+      # 6️⃣ Migracje w środowisku testing
+      - run: php artisan migrate:fresh --force --env=testing
 
-      # 8️⃣ Run tests
-      - name: Run Laravel tests
-        run: php artisan test --parallel --env=testing
+      # 7️⃣ Uruchomienie testów Laravel
+      - run: php artisan test --parallel --env=testing
