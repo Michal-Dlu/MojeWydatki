@@ -9,54 +9,40 @@ jobs:
   laravel-tests:
     runs-on: ubuntu-latest
 
-    # 🔹 MySQL jako serwis (połączony komentarz)
     services:
       mysql:
         image: mysql:8
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test_db
-        # Health check - GitHub Actions poczeka, aż kontener MySQL będzie gotowy
         options: >-
-          --health-cmd="mysqladmin ping -h localhost -uroot -proot"
+          --health-cmd="mysqladmin ping -h mysql -uroot -proot"
           --health-interval=5s
           --health-timeout=3s
-          --health-retries=40   # <- zwiększone retry, żeby job nie startował za wcześnie
+          --health-retries=40
 
-    # 🔹 Zmienne środowiskowe joba
     env:
       APP_ENV: testing
       APP_DEBUG: true
       DB_CONNECTION: mysql
-      DB_HOST: mysql       # <- nazwa serwisu MySQL w Actions
+      DB_HOST: mysql
       DB_PORT: 3306
       DB_DATABASE: test_db
       DB_USERNAME: root
       DB_PASSWORD: root
 
     steps:
-      # 1️⃣ Pobranie repo
       - uses: actions/checkout@v4
 
-      # 2️⃣ PHP 8.4 + rozszerzenia
       - uses: shivammathur/setup-php@v2
         with:
           php-version: 8.4
           extensions: mbstring, bcmath, pdo_mysql
 
-      # 3️⃣ Instalacja zależności Composera
       - run: composer install --no-progress --prefer-dist
 
-      # 4️⃣ Skopiuj plik .env.testing do .env
       - run: cp .env.testing .env
-
-      # 5️⃣ Wygeneruj APP_KEY dla środowiska testing
       - run: php artisan key:generate --env=testing
 
-      # ❌ KROK "WAIT FOR MYSQL" usunięty, GitHub Actions sam poczeka dzięki health check
-
-      # 6️⃣ Migracje w środowisku testing
       - run: php artisan migrate:fresh --force --env=testing
-
-      # 7️⃣ Uruchomienie testów Laravel
       - run: php artisan test --parallel --env=testing
