@@ -24,7 +24,7 @@
         <section class="masthead page-section portfolio" id="portfolio">
             <div class="container">
                 <div class="row justify-content-center">
-<form action="{{route('expenses.suma')}}" method="POST">
+<form action="{{route('expenses.suma')}}" method="GET">
                     @csrf   
 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="month">
                                 <option disabled selected>Wybierz miesiąc</option>

@@ -24,7 +24,7 @@ Route::get('/get-shops-by-customer/{customerId}', [ShopsController::class, 'getS
 Route::get('/expenses/expensesList', [ExpensesController::class, 'list'])->name('expenses.expensesList');
 Route::get('/expenses/form', [ExpensesController::class, 'create'])->name('expenses.form');
 Route::post('/expenses/zapisz', [ExpensesController::class, 'store'])->name('expenses.store');
-Route::post('/expenses/suma', [ExpensesController::class, 'suma'])->name('expenses.suma'); 
+Route::get('/expenses/suma', [ExpensesController::class, 'suma'])->name('expenses.suma'); 
 Route::get('/expenses/edytuj/{id}', [ExpensesController::class, 'edit'])->name('expenses.edit');
 Route::put('/expenses/aktualizuj/{id}', [ExpensesController::class, 'update'])->name('expenses.update');
 Route::delete('/expenses/usun/{id}', [ExpensesController::class, 'destroy'])->name('expenses.destroy');
