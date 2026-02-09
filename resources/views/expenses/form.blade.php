@@ -34,7 +34,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
                        
-                        <form id="contactForm" method="POST" action="{{ route('expenses.store') }}">
+                        <form method="POST" action="{{ route('expenses.store') }}">
                             @csrf                     
                             @error('sklep')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -97,7 +97,7 @@
       
         
         <!-- Core theme JS-->
-        <script src="{{asset('js/scripts.js')}}"></script>
+       <!-- <script src="{{asset('js/scripts.js')}}"></script>-->
    
  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

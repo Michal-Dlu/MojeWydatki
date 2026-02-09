@@ -30,6 +30,8 @@ class ExpensesController extends Controller
     }
     public function store(Request $request)
     {
+        
+
         $validated = $request->validate([
             'customer_id' => 'nullable|exists:customers,id',
             'sklep' => 'required|exists:shops|string|max:255',
