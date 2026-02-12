@@ -1,4 +1,4 @@
-name: Laravel + MySQL Tests
+name: Laravel Tests
 
 on:
   push:
@@ -9,42 +9,29 @@ jobs:
   laravel-tests:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:8
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: test_db
-          ports:
-            3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
-          --health-interval=5s
-          --health-timeout=3s
-          --health-retries=40
-
     env:
       APP_ENV: testing
       APP_DEBUG: true
-      DB_CONNECTION: mysql
-      DB_HOST: 127.0.0.1
-      DB_PORT: 3306
-      DB_DATABASE: test_db
-      DB_USERNAME: root
-      DB_PASSWORD: root
+      DB_CONNECTION: sqlite
+      DB_DATABASE: ":memory:"
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: shivammathur/setup-php@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
           php-version: 8.4
-          extensions: mbstring, bcmath, pdo_mysql
+          extensions: mbstring, bcmath, pdo_sqlite
 
-      - run: composer install --no-progress --prefer-dist
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist
 
-      - run: php artisan key:generate
-      - run: php artisan migrate:fresh --force
-      - run: php artisan test --parallel
+      - name: Generate app key
+        run: php artisan key:generate
 
-      - run: php artisan tinker --execute="dump(config('database.connections.mysql.host'));"
+      - name: Run migrations
+        run: php artisan migrate:fresh --force
+
+      - name: Run tests
+        run: php artisan test --parallel
