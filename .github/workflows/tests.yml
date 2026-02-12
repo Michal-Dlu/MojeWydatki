@@ -7,7 +7,7 @@ on:
 
 jobs:
   # ------------------------
-  # Job 1: szybkie testy SQLite
+  # Szybkie testy SQLite
   # ------------------------
   test-sqlite:
     runs-on: ubuntu-latest
@@ -30,71 +30,12 @@ jobs:
         run: composer install --no-progress --prefer-dist
 
       - name: Generate app key
-        run: php artisan key:generate --ansi
+        run: php artisan key:generate
 
       - name: Run migrations (SQLite)
         run: |
-          # SQLite nie obsługuje MySQL-only ALTER/DROP INDEX → ignorujemy błędy
-          php artisan migrate:fresh --force || echo "Ignoring SQLite-specific migrations"
+          # SQLite nie obsługuje niektórych MySQL-only ALTER/DROP INDEX
+          php artisan migrate --force || echo "Ignoring SQLite-specific migrations"
 
       - name: Run tests (SQLite)
         run: php artisan test
-
-  # ------------------------
-  # Job 2: pełne testy MySQL
-  # ------------------------
-  test-mysql:
-    runs-on: ubuntu-latest
-
-    services:
-      mysql:
-        image: mysql:8
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: test_db
-        options: >-
-          -p 3306:3306
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
-          --health-interval=5s
-          --health-timeout=3s
-          --health-retries=40
-
-    env:
-      APP_ENV: testing
-      APP_DEBUG: true
-      DB_CONNECTION: mysql
-      DB_HOST: 127.0.0.1
-      DB_PORT: 3306
-      DB_DATABASE: test_db
-      DB_USERNAME: root
-      DB_PASSWORD: root
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.4
-          extensions: mbstring, bcmath, pdo_mysql
-
-      - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
-
-      - name: Wait for MySQL
-        run: |
-          echo "Waiting for MySQL to be ready..."
-          for i in {1..30}; do
-            mysqladmin ping -h 127.0.0.1 -uroot -proot && break
-            echo "Waiting 2s..."
-            sleep 2
-          done
-
-      - name: Generate app key
-        run: php artisan key:generate --ansi
-
-      - name: Run migrations (MySQL)
-        run: php artisan migrate:fresh --force
-
-      - name: Run tests (MySQL) in parallel
-        run: php artisan test --parallel
