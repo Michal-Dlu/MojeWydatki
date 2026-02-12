@@ -62,7 +62,7 @@ jobs:
       APP_ENV: testing
       APP_DEBUG: true
       DB_CONNECTION: mysql
-      DB_HOST: 127.0.0.1
+      DB_HOST: mysql
       DB_PORT: 3306
       DB_DATABASE: test_db
       DB_USERNAME: root
@@ -84,7 +84,7 @@ jobs:
         run: |
           echo "Waiting for MySQL to be ready..."
           for i in {1..30}; do
-            mysqladmin ping -h 127.0.0.1 -uroot -proot && break
+            mysqladmin ping -h mysql -uroot -proot && break
             sleep 2
           done
 
