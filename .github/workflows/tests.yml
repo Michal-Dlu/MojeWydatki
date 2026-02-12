@@ -32,13 +32,13 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
-      - name: Run migrations
+      - name: Run migrations (SQLite)
         run: |
-          # SQLite nie obsługuje DROP INDEX w MySQL, więc ignorujemy
+          # SQLite nie obsługuje DROP INDEX w MySQL, więc ignorujemy błędy
           php artisan migrate:fresh --force || echo "Ignoring SQLite-specific migrations"
 
-      - name: Run tests
-        run: php artisan test --parallel
+      - name: Run tests (SQLite)
+        run: php artisan test
 
   # ------------------------
   # Job 2: pełne testy MySQL
@@ -91,8 +91,8 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
-      - name: Run migrations
+      - name: Run migrations (MySQL)
         run: php artisan migrate:fresh --force
 
-      - name: Run tests
+      - name: Run tests (MySQL) in parallel
         run: php artisan test --parallel
