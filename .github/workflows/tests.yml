@@ -16,7 +16,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test_db
         options: >-
-          --health-cmd="mysqladmin ping -h mysql -uroot -proot"
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
           --health-interval=5s
           --health-timeout=3s
           --health-retries=40
@@ -25,7 +25,7 @@ jobs:
       APP_ENV: testing
       APP_DEBUG: true
       DB_CONNECTION: mysql
-      DB_HOST: mysql
+      DB_HOST: 127.0.0.1
       DB_PORT: 3306
       DB_DATABASE: test_db
       DB_USERNAME: root
@@ -41,8 +41,8 @@ jobs:
 
       - run: composer install --no-progress --prefer-dist
 
-      - run: cp .env.testing .env
-      - run: php artisan key:generate --env=testing
+      - run: php artisan key:generate
+      - run: php artisan migrate:fresh --force
+      - run: php artisan test --parallel
 
-      - run: php artisan migrate:fresh --force --env=testing
-      - run: php artisan test --parallel --env=testing
+      - run: php artisan tinker --execute="dump(config('database.connections.mysql.host'));"
