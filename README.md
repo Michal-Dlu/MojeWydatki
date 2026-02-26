@@ -41,18 +41,18 @@ Pobierz projekt jako plik ZIP z GitHub i rozpakuj go do folderu:
 Opcja dla znających GITa:   
 **Sklonuj repozytorium**:
     W terminalu wpisz: 
-   ``bash
+   
    git clone https://github.com/Michal-Dlu/MojeWydatki
       
 2. W terminalu wejdź do katalogu projektu: cd MojeWydatki
 
 3. Zainstaluj zależności PHP (Composer):
-``bash
+
 composer install
 
 4. Skonfiguruj plik .env
 Skopiuj plik .env.example do .env:
-``bash
+
 cp .env.example .env
 
 Jeśli używasz Windows i to nie działa, po prostu:
@@ -81,12 +81,12 @@ w tym wypadku mam DB_DATABASE=moje_wydatki. Kliknij Create.
 php artisan key:generate 
 
 8. Wykonaj migrację w terminalu:
-``bash
+
 php artisan migrate
 
 Twoja aplikacja będzie dostępna pod adresem: http://localhost:8000/index
 9. W terminalu wpisz:
-``bash
+
 php artisan serve
 
 Wejdź na ten adres w przeglądarce http://localhost:8000/index
