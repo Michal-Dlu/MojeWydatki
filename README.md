@@ -107,7 +107,15 @@ Do pracy z projektem warto użyć edytora tekstu np.:
 - Notepad++
   Nie jest to wymagane do działania aplikacji, ale znacznie ułatwia pracę z kodem. 
 
+# Użycie
 
+Panel główny aplikacji. Tu wybieramy gdzie chcemy działać.
+<img width="1366" height="768" alt="MojeWydatki" src="https://github.com/user-attachments/assets/b9434916-f362-47db-8def-f836ead712c2" />
+Na początku dodajemy sobie użytkowników. Wybieramy Użytkownicy. Pokazuje się nam lista użytkowników. Tutaj wybieramy DODAJ UŻYTKOWNIKA. 
+<img width="1366" height="768" alt="customersList" src="https://github.com/user-attachments/assets/2b8a9a44-ca2d-4865-9504-299f15092aff" />
+Pokaże nam się formularz do dodawania nowego użytkownika.
+<img width="1366" height="768" alt="NewCustomer" src="https://github.com/user-attachments/assets/1dafb57e-ad2f-4ebe-8f7a-3590fa35275e" />
+Po wpisaniu nazwy nowego użytkownika i kliknięciu przycisku Zapisz użytkownika. Znów pokaże nam się lista użytkowników, gdzie można usunąć lub edytować użytkowników.
 
   
 
