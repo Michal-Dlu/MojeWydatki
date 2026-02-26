@@ -1,19 +1,21 @@
-# Moje_wydatki
+# MojeWydatki
 
 ## Spis treści
 1. [Opis](#opis)
-2. [Instalacja](#instalacja)
-3. [Użycie](#użycie)
-4. [Przykłady](#przykłady)
+2. [Wymagania](#wymagania)
+3. [Instalacja](#instalacja)
+4. [Użycie](#użycie)
+5. [Przykłady](#przykłady)
  
 
 ## Opis
 
-Program zawierający bazę danych do przechowywania domowych wydatków. Ma opcję Użytkowników, Sklepów i Wydatków w tych sklepach. 
-
-
-
-
+Aplikacja webowa służąca do zarządzania domowymi wydatkami.
+Umożliwia:
+ - Zarządzanie użytkownikami,
+ - Dodawanie sklepów,
+ - Rejestrowanie wydatków w tych sklepach,
+ - Przechowywanie danych w basie MySQL 
 
 ## Wymagania
 
@@ -23,20 +25,24 @@ Aby uruchomić ten projekt, musisz mieć zainstalowane:
 - [Composer](https://getcomposer.org/)
 - [XAMPP](https://www.apachefriends.org/index.html) lub podobne środowisko serwerowe (np. WAMP, MAMP, Laragon), który zawiera:
   
-- Serwer lokalny Apache
+- Serwer lokalny np. XAMPP
 - [PHP](https://www.php.net/) w wersji 7.3 lub wyższej
 - MySQL
 
-  XAMPPa nie instaluj w C:\FolderFiles, ponieważ jest to folder chroniony i serwer lokalny nie wystartuje. Najlepiej zostaw podstawowe opcje instalacyjne.
-  Po zainstalowaniu XAMPP uruchom serwer i bazę danych
+  Nie instaluj XAMPP w folderze C:\FolderFiles, ponieważ jest to katalog chroniony i serwer lokalny może się nie uruchomić. Najlepiej zostaw domyślną lokalizację instalacji.
+  Po zainstalowaniu XAMPP uruchom:
+  - serwer Apache
+  - bazę danych MySQL
 <img width="1366" height="768" alt="MySQL" src="https://github.com/user-attachments/assets/55e39f9e-de0e-42cc-bfda-44677482c5a3" />
 
 ## Instalacja
 
 1. Pobierz projekt:
+
 Opcja łatwiejsza:
 Pobierz projekt jako plik ZIP z GitHub i rozpakuj go do folderu:
-    C:\xampp\htdocs\ lub innego gdzie zainstalowałeś XAMPPa
+    C:\xampp\htdocs\
+    lub innego gdzie zainstalowałeś XAMPP
 
 Opcja dla znających GITa:   
 **Sklonuj repozytorium**:
@@ -78,6 +84,7 @@ w tym wypadku mam DB_DATABASE=moje_wydatki. Kliknij Create.
 <img width="1366" height="768" alt="createDatabase" src="https://github.com/user-attachments/assets/92a0b788-4a4e-4193-ac54-fe2b2dcd1cf8" />
 
 7. Wygeneruj klucz aplikacji. W terminalu wpisz:
+
 php artisan key:generate 
 
 8. Wykonaj migrację w terminalu:
@@ -90,8 +97,15 @@ Twoja aplikacja będzie dostępna pod adresem: http://localhost:8000/index
 php artisan serve
 
 Wejdź na ten adres w przeglądarce http://localhost:8000/index
-Twoim oczom powinien ukazać się taki pulpit:
+Powinien wyświetlić się panel główny aplikacji MojeWydatki: 
 <img width="1366" height="768" alt="MojeWydatki" src="https://github.com/user-attachments/assets/b9434916-f362-47db-8def-f836ead712c2" />
+
+Zalecany Edytor kodu(opcjonalnie)
+Do pracy z projektem warto użyć edytora tekstu np.:
+- Visual Studio Code,
+- PHPStorm,
+- Notepad++
+  Nie jest to wymagane do działania aplikacji, ale znacznie ułatwia pracę z kodem. 
 
 
 
