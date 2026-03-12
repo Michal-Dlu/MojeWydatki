@@ -43,7 +43,7 @@
 <form action="{{ route('shops.filter') }}" method="GET">
                 
                 <select name="customer_id" id="customer_id" class="form-select mb-3">
-                    <option value="">Wybierz klienta</option>
+                    <option value="">Wybierz użytkownika</option>
                     @foreach($customers as $customer)
                         <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                     @endforeach

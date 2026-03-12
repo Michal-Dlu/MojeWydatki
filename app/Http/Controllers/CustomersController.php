@@ -26,7 +26,7 @@ class CustomersController extends Controller
         
         $customer->save();
 
-        return redirect()->route('customers.customers')->with('success', 'Użytkownik został dodany pomyślnie.');
+        return redirect()->route('customers.customers')->with('success', 'Użytkownik ' . $customer->name . ' został dodany pomyślnie.');
     }
 
     public function create()
@@ -38,7 +38,7 @@ class CustomersController extends Controller
         $customer = Customer::findOrFail($id);
         $customer->delete();
 
-        return redirect()->route('customers.customers')->with('success', 'Użytkownik został usunięty pomyślnie.');
+        return redirect()->route('customers.customers')->with('success', 'Użytkownik ' . $customer->name . ' został usunięty pomyślnie.');
     }
     public function edit($id)
     {

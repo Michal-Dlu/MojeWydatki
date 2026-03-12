@@ -11045,3 +11045,8 @@ html {
 .copyright {
   background-color: #1a252f;
 }
+.disabled {
+  pointer-events: none;
+  opacity: 0.65;
+  cursor: not-allowed;
+}

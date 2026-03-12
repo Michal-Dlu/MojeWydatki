@@ -21,6 +21,12 @@
         <!-- Portfolio Section-->
         <section class="page-section portfolio" id="portfolio" style="padding:20px">
             <div class="container">
+                {{-- Komunikat dla nowych użytkowników --}}
+@if(!$CustomerExists)
+    <div class="alert alert-info text-center">
+        Aby skorzystać z aplikacji wprowadź pierwszego użytkownika
+    </div>
+@endif
                 <!-- Portfolio Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0" style="font-size:30px">Menu</h2>
                 <!-- Icon Divider-->
@@ -44,7 +50,8 @@
                     </div> 
                     <!-- sklep Item 1-->
                     <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto"><a class="navbar-brand" href="{{ route('shops.filter') }}">
+                        <div class="portfolio-item mx-auto {{ !$CustomerExists ? 'disabled' : ''}}">
+                            <a class="navbar-brand" href="{{ $CustomerExists ? route('shops.filter') : '#' }}">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
@@ -56,7 +63,8 @@
                     </div>
                     <!-- wydatek Item 2-->
                     <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto"><a class="navbar-brand" href="{{ route('expenses.expensesList') }}">
+                        <div class="portfolio-item mx-auto {{ !$CustomerExists ? 'disabled' : ''}}">
+                            <a class="navbar-brand" href="{{ $CustomerExists ? route('expenses.expensesList') : '#' }}">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>

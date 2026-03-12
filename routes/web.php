@@ -4,12 +4,17 @@ use App\Http\Controllers\CustomersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\ShopsController;
+use App\Models\Customer;
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/index', function() {
-    return view('index'); })->name('index');  
+   
+    $CustomerExists = Customer::exists(); // Sprawdzenie, czy customer istnieje
+    
+    return view('index', compact('CustomerExists')); // Przekazanie informacji do widoku
+})->name('index');
 
 
 Route::get('/shops/formularz', [ShopsController::class, 'create'])->name('shops.form');
