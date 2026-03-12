@@ -120,6 +120,16 @@ Można też wyczyścić formularz kilkająć "WYCZYŚĆ FORMULARZ". Można też 
 "POWRÓT DO MENU".
 <img width="1366" height="768" alt="CUSTOMERList" src="https://github.com/user-attachments/assets/b0943a07-e575-4ea2-9f57-f18b5c72a014" />
 Dodanych użytkowników można edytować i usuwać, klikając przyciski "Edytuj" i "Usuń" przy danym użytkowniku.
+<img width="1366" height="768" alt="customerEdit" src="https://github.com/user-attachments/assets/f71980e2-79ec-48d4-8866-f838ceb2dfdc" />
+Jeśli wybraliśmy "Edytuj" wyświelta nam się strona do edycji użytkownika. Jeśli poprawimy dane i zatwierdzimy użytkownika. Wrócimy do Listy Użytkowników
+ale pojawi nam się komunikat: Użtkownik został zaktualizowany pomyślnie.
+<img width="1366" height="768" alt="CustomerEditSuccess" src="https://github.com/user-attachments/assets/d92a81d9-9b59-4e65-b9b1-a5f4c13f1175" />
+Jeśli wybieramy Usuń przy użytkowniku aplikacja zapyta czy jesteśmy pewni, że chcemy usunąć tego użytkownika.
+<img width="1366" height="768" alt="CustomerDelete" src="https://github.com/user-attachments/assets/3b39f1ae-cad8-4491-ae42-ee0e54a1d7f4" />
+Jeśli wciśniemy Ok. Apilkacja usunie danego użytkownika i wyświetli odpowiedni komunikat.
+<img width="1366" height="768" alt="CustomerDeleteSuccess" src="https://github.com/user-attachments/assets/1b122506-f7bc-4a9d-8d10-cbc0f41fe326" />
+
+
 
   
 
