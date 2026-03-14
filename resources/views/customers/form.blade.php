@@ -35,6 +35,12 @@
                     
                         <form  method="POST" action="{{route('customers.store')}}"   >
                             <!-- Name input-->
+                             @error('name')
+                                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">{{ $message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @enderror
+
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="name" type="text" name="name" placeholder="Wpisz nazwę użytkownika" />
                                 <label for="name">Nazwa użytkownika</label>                                

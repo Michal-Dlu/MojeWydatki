@@ -29,12 +29,19 @@
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
+               
                 <!-- Contact Section Form-->
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
              
                         <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="{{route('shops.store')}}"   >
                             <!-- Name input-->
+                             @error('sklep')
+                                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">{{ $message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                
+                            @enderror
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="shop_name" type="text" name="sklep" placeholder="Wpisz nazwę sklepu" />
                                 <label for="sklep">Nazwa sklepu</label>
@@ -43,7 +50,7 @@
                             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="customer_id" id="customer_id">
                                 <option selected>Wybierz użytkownika</option>
                                 @foreach($customers as $customer)
-                                    <option value="{{$customer->id}}">{{$customer->name}}</option>
+                                    <option value="{{$customer->id}}" {{ old('customer_id') == $customer->id ? 'selected' : '' }}>{{$customer->name}}</option>
                                 @endforeach
                             @csrf
                             <!-- Submit Button-->

@@ -13,7 +13,7 @@ class Customer extends Model
     //protected $fillable = ['name']; 
        public function expenses()
     {
-        return $this->hasMany('Expense', 'customer_id');
+        return $this->hasMany(Expense::class, 'customer_id');
     }
    
     public function shops()

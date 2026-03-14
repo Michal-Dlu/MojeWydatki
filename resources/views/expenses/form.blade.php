@@ -1,6 +1,8 @@
 @extends('layouts.app')
       @section('content')
-@vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/shops.js'])
+@vite(['resources/css/app.css', 'resources/js/app.js',])
+    <body id="page-top">
+        <!-- Navigation-->
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -52,8 +54,8 @@
                                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="customer_id" id="customer_id"  >
                                 <option >Wybierz użytkownika</option>
                                 @foreach($customers as $customer)
-                                <option value="{{$customer->id}}">{{$customer->name}}</option>
-                                @endforeach
+                                <option value="{{$customer->id}}" {{ old('customer_id', $lastCustomer ? $lastCustomer->id : null) == $customer->id ? 'selected' : '' }}>{{$customer->name}}</option>
+                                @endforeach 
                                 </select>
                                 <div class="invalid-feedback" data-sb-feedback="customer_id:required">Użytkownik jest wymagany</div>   
                                                   

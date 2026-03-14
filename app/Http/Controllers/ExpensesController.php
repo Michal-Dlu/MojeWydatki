@@ -7,32 +7,34 @@ use App\Models\Customer;
 use App\Models\Expense;
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use Illuminate\Support\Carbon;
 
 class ExpensesController extends Controller
 {
     public function list(Request $request)
-    {
-           
-          $customer_id = $request->input('customer_id');  // Przechwyć dane z formularza
-    $expenses = Expense::query()
-        ->when($customer_id, function ($query, $customer_id) {
-            return $query->where('customer_id', $customer_id);
-        })
-        ->get();
+    {           
+        $customer_id = $request->input('customer_id');  // Przechwyć dane z formularza
+        $expensesQuery = Expense::query()
+        ->when($customer_id, fn($query)=>$query->where('customer_id',$customer_id))
+        ->where('data_zakupu', '>=', Carbon::now()->subMonth()) 
+        ->orderBy('data_zakupu', 'desc');
+    
+                
+        $sum = $expensesQuery->sum('kwota');
+        $perPage = $request->input('perPage', 10);
+        $expenses = $expensesQuery->paginate($perPage)->withQueryString();  // Dodaj paginację, np. 10 rekordów na stronę
 
-    $customer = Customer::find($customer_id);  // Znajdź klienta po ID
-
-    $sum = $expenses->sum('kwota');
-    $shops = Shop::all();
-    $customers = Customer::all();
+        $customer = Customer::find($customer_id);  // Znajdź klienta po ID
+    
+   // $sum = $expenses->sum('kwota');
+        $shops = Shop::orderBy('sklep', 'asc')->get();
+        $customers = Customer::all();
        
         return view('expenses.expensesList', compact('expenses', 'sum', 'shops','customers', 'customer_id'));
     }
     public function store(Request $request)
     {
-        
-
-        $validated = $request->validate([
+            $validated = $request->validate([
             'customer_id' => 'nullable|exists:customers,id',
             'sklep' => 'required|exists:shops|string|max:255',
             'kwota' => 'required|string|max:255',
@@ -43,8 +45,7 @@ class ExpensesController extends Controller
            'sklep.exists' => 'Wybrany sklep nie istnieje w bazie danych.',
            'kwota.required' => 'Pole kwota jest wymagane.',
            'data_zakupu.required' => 'Pole data zakupu jest wymagane.',
-           'data_zakupu.date' => 'Pole data zakupu musi być prawidłową datą.',
-           
+           'data_zakupu.date' => 'Pole data zakupu musi być prawidłową datą.',           
         ]);
 
         $expense = new Expense();
@@ -53,7 +54,7 @@ class ExpensesController extends Controller
         $expense->kwota = str_replace(',', '.', $validated['kwota']);
         $expense->data_zakupu = $validated['data_zakupu'];
         $expense->customer_id = $validated['customer_id'] ?? null;
-        //
+        
        
         $expense->save();
 
@@ -65,11 +66,14 @@ class ExpensesController extends Controller
     {
         // Tutaj ładujesz formularz do dodania wydatku (widok expenses.form)
         $customers = Customer::all();
-        return view('expenses.form', compact('customers'));
+        $lastShop = Shop::latest()->first();
+        $lastCustomer = Customer::latest()->first(); // Pobierz ostatnio dodany klient
+        return view('expenses.form', compact('customers', 'lastShop', 'lastCustomer')); // Przekaż
     }      
 
     public function suma(Request $request)
 {
+   
     // Pobierz dane z formularza
     $month = old('month', $request->input('month'));
     $year = old('year', $request->input('year'));
@@ -93,12 +97,38 @@ if ($sklep == "Wybierz sklep") {
     }
 
     // Pobierz wydatki na podstawie parametrów
-    $expenses = (new Expense())->getExpensesByMonth($month, $year, $sklep, $customer_id);
-    $sum = (new Expense())->getTotalExpensesByMonth($month, $year, $sklep, $customer_id);
+   $perPage = $request->input('perPage', 10);
+
+// Query z filtrami
+$query = Expense::query();
+
+if ($customer_id != '0') {
+    $query->where('customer_id', $customer_id);
+}
+
+if ($month) {
+    $query->whereMonth('data_zakupu', $month);
+}
+
+if ($year) {
+    $query->whereYear('data_zakupu', $year);
+}
+
+if ($sklep && $sklep != '0') {
+    $query->where('sklep', $sklep);
+}
+
+// Suma wszystkich dopasowanych rekordów
+$sum = $query->sum('kwota');
+
+// Paginacja po wszystkich rekordach
+$expenses = $query->orderBy('data_zakupu', 'desc')
+                  ->paginate($perPage)
+                  ->withQueryString();
 
    
 $customers = Customer::all();
-    // Zwróć widok z danymi
+    
     return view('expenses.expensesList', compact('expenses', 'sum', 'month', 'year', 'shops', 'customer', 'customer_id', 'customers'));
 }
 public function edit($id)

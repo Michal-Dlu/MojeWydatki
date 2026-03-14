@@ -123,7 +123,17 @@
     <tr><td colspan="4">Suma: {{$sum}} zł</td>
     </tr>
   </tbody>
-</table>                  
+</table> 
+
+
+<!-- PAGINACJA -->
+
+<div class="d-flex justify-content-center mt-3">
+    {{ $expenses->links('pagination::bootstrap-5') }}
+</div>
+
+
+<p><strong>Suma wydatków:</strong> {{ $sum }}</p>
                     </div>
               </div>
             </div>

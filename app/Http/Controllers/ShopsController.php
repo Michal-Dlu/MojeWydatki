@@ -31,8 +31,15 @@ class ShopsController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'sklep' => 'required|string|max:255',
+            'sklep' => 'required|string|max:255|unique:shops,sklep',
             'customer_id' => 'nullable|exists:customers,id'
+        ],
+        [
+            'sklep.required' => 'Pole "Sklep" jest wymagane.',
+            'sklep.string' => 'Pole "Sklep" musi być tekstem.',
+            'sklep.max' => 'Pole "Sklep" nie może przekraczać 255 znaków.',
+            'sklep.unique' => 'Sklep o nazwie ' . $request->input('sklep') . ' już istnieje.',
+            'customer_id.exists' => 'Wybrany klient nie istnieje.'
         ]);
 
         $shop = new Shop();
@@ -51,7 +58,12 @@ class ShopsController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'sklep' => 'required|string|max:255',
+            'sklep' => 'required|string|max:255|unique:shops,sklep,' . $id,
+        ],[
+            'sklep.required' => 'Pole "Sklep" jest wymagane.',
+            'sklep.string' => 'Pole "Sklep" musi być tekstem.',
+            'sklep.max' => 'Pole "Sklep" nie może przekraczać 255 znaków.',
+            'sklep.unique' => 'Sklep o nazwie ' . $request->input('sklep') . ' już istnieje.',
         ]);
 
         $shop = Shop::findOrFail($id);
