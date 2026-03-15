@@ -33,5 +33,10 @@ $(function() {
             $('#shop_name').html('<option selected>Wybierz sklep</option>');
         }
     });
+    // Ładujemy sklepy na początku, jeśli jest wybrany klient
+        var selectedCustomerId = $('#customer_id').val();
+        if (selectedCustomerId != "0") {
+            $('#customer_id').trigger('change');
+        }
 });
 

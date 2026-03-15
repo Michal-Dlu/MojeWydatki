@@ -72,7 +72,7 @@
     Lista Wydatków 
  
     @if(isset($customer_id))
-        <!--{{ \App\Models\Customer::find($customer_id)->name ?? '' }}  Jeśli klient jest wybrany, wyświetl jego nazwisko -->
+       
        {{ $customer->name ?? '' }}  
   
     @endif

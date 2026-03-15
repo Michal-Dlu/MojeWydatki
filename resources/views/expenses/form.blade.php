@@ -54,7 +54,7 @@
                                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="customer_id" id="customer_id"  >
                                 <option >Wybierz użytkownika</option>
                                 @foreach($customers as $customer)
-                                <option value="{{$customer->id}}" {{ old('customer_id', $lastCustomer ? $lastCustomer->id : null) == $customer->id ? 'selected' : '' }}>{{$customer->name}}</option>
+                                <option value="{{$customer->id}}" @if(session('last_selected_customer') == $customer->id) selected @endif>{{$customer->name}}</option>
                                 @endforeach 
                                 </select>
                                 <div class="invalid-feedback" data-sb-feedback="customer_id:required">Użytkownik jest wymagany</div>   

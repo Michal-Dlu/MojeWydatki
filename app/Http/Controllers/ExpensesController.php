@@ -57,6 +57,7 @@ class ExpensesController extends Controller
         
        
         $expense->save();
+        session(['last_selected_customer' => $expense->customer_id]);
 
         return redirect()->route('expenses.expensesList')->with('success', 'Wydatek został dodany pomyślnie.');
     }
@@ -67,7 +68,10 @@ class ExpensesController extends Controller
         // Tutaj ładujesz formularz do dodania wydatku (widok expenses.form)
         $customers = Customer::all();
         $lastShop = Shop::latest()->first();
-        $lastCustomer = Customer::latest()->first(); // Pobierz ostatnio dodany klient
+        $lastCustomer = Customer::latest()->first();// Pobierz ostatnio dodany klient
+           // Zapisz ostatnio wybranego klienta do sesji, tylko jeśli klient został wybrany
+        
+
         return view('expenses.form', compact('customers', 'lastShop', 'lastCustomer')); // Przekaż
     }      
 
@@ -128,7 +132,8 @@ $expenses = $query->orderBy('data_zakupu', 'desc')
 
    
 $customers = Customer::all();
-    
+ 
+
     return view('expenses.expensesList', compact('expenses', 'sum', 'month', 'year', 'shops', 'customer', 'customer_id', 'customers'));
 }
 public function edit($id)
