@@ -116,18 +116,18 @@ Na początku musimy dodać pierwszego użytkownika, ponieważ aplikacja blokuje 
 <img width="1366" height="768" alt="PoczatekBezCustomera" src="https://github.com/user-attachments/assets/b169dcfe-cd26-48c5-9d92-5c7361894f3d" />
 
 Wybieramy Użytkownicy. Pokazuje się nam lista użytkowników. Tutaj wybieramy DODAJ UŻYTKOWNIKA. 
-<img width="1366" height="768" alt="customersList" src="https://github.com/user-attachments/assets/2b8a9a44-ca2d-4865-9504-299f15092aff" />
+
 Pokaże nam się formularz do dodawania nowego użytkownika.
-<img width="1366" height="768" alt="dodajUzytkownika" src="https://github.com/user-attachments/assets/7b38921b-f4af-40c2-a49d-9a403e0fe1fb" />
+
 Po wpisaniu nazwy nowego użytkownika i kliknięciu przycisku "Zapisz użytkownika". Znów pokaże nam się lista użytkowników, gdzie można usunąć lub edytować użytkowników.
 Można też wyczyścić formularz kilkająć "WYCZYŚĆ FORMULARZ". Można też powrócić do Listy użytkowników klikając "LISTA UŻYTKOWNIKÓW" lub do panelu głównego klikając 
 "POWRÓT DO MENU".
-<img width="1366" height="768" alt="CUSTOMERList" src="https://github.com/user-attachments/assets/b0943a07-e575-4ea2-9f57-f18b5c72a014" />
+
 Dodanych użytkowników można edytować i usuwać, klikając przyciski "Edytuj" i "Usuń" przy danym użytkowniku.
-<img width="1366" height="768" alt="customerEdit" src="https://github.com/user-attachments/assets/f71980e2-79ec-48d4-8866-f838ceb2dfdc" />
+
 Jeśli wybraliśmy "Edytuj" wyświelta nam się strona do edycji użytkownika. Jeśli poprawimy dane i zatwierdzimy użytkownika. Wrócimy do Listy Użytkowników
 ale pojawi nam się komunikat: Użtkownik został zaktualizowany pomyślnie.
-<img width="1366" height="768" alt="CustomerEditSuccess" src="https://github.com/user-attachments/assets/d92a81d9-9b59-4e65-b9b1-a5f4c13f1175" />
+
 Jeśli wybieramy Usuń przy użytkowniku aplikacja zapyta czy jesteśmy pewni, że chcemy usunąć tego użytkownika.
 <img width="1366" height="768" alt="CustomerDelete" src="https://github.com/user-attachments/assets/3b39f1ae-cad8-4491-ae42-ee0e54a1d7f4" />
 Jeśli wciśniemy Ok. Apilkacja usunie danego użytkownika i wyświetli odpowiedni komunikat.
