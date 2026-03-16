@@ -98,7 +98,8 @@ php artisan serve
 
 Wejdź na ten adres w przeglądarce http://localhost:8000/index
 Powinien wyświetlić się panel główny aplikacji MojeWydatki: 
-<img width="1366" height="768" alt="PoczatekBezCustomera" src="https://github.com/user-attachments/assets/503a8dcf-d788-4ef7-b3aa-c6895890bc32" />
+<img width="2682" height="1096" alt="PanelBezCustomera" src="https://github.com/user-attachments/assets/4e3d407b-5fd4-4e2c-ae17-a8c56d59bcbe" />
+
 
 
 Zalecany Edytor kodu(opcjonalnie)
@@ -113,7 +114,8 @@ Do pracy z projektem warto użyć edytora tekstu np.:
 Panel główny aplikacji. Tu wybieramy gdzie chcemy działać.
 <img width="1366" height="768" alt="MojeWydatki" src="https://github.com/user-attachments/assets/b9434916-f362-47db-8def-f836ead712c2" />
 Na początku musimy dodać pierwszego użytkownika, ponieważ aplikacja blokuje nam opcje Sklepy i Wydatki.
-<img width="1366" height="768" alt="PoczatekBezCustomera" src="https://github.com/user-attachments/assets/b169dcfe-cd26-48c5-9d92-5c7361894f3d" />
+<img width="2682" height="1096" alt="PanelBezCustomera" src="https://github.com/user-attachments/assets/05ba2a5e-4aa2-41bb-bc3e-45153b1b4528" />
+
 
 Wybieramy Użytkownicy. Pokazuje się nam lista użytkowników. Tutaj wybieramy DODAJ UŻYTKOWNIKA. 
 
