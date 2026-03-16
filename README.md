@@ -129,9 +129,9 @@ Jeśli wybraliśmy "Edytuj" wyświelta nam się strona do edycji użytkownika. J
 ale pojawi nam się komunikat: Użtkownik został zaktualizowany pomyślnie.
 
 Jeśli wybieramy Usuń przy użytkowniku aplikacja zapyta czy jesteśmy pewni, że chcemy usunąć tego użytkownika.
-<img width="1366" height="768" alt="CustomerDelete" src="https://github.com/user-attachments/assets/3b39f1ae-cad8-4491-ae42-ee0e54a1d7f4" />
+
 Jeśli wciśniemy Ok. Apilkacja usunie danego użytkownika i wyświetli odpowiedni komunikat.
-<img width="1366" height="768" alt="CustomerDeleteSuccess" src="https://github.com/user-attachments/assets/1b122506-f7bc-4a9d-8d10-cbc0f41fe326" />
+
 Jeśli mamy już chociaż jednego użytkownika. Możemy przejść do Menu Głównego klikając "POWRÓT DO MENU" w prawym, górnym roku ekranu.
 Następnie należy wybrać opcję Sklepy w Menu Głównym, ponieważ do wpisaywania wydatków potrzebny jest chociaż jeden sklep.
 Po kliknięciu kafelka "Sklepy" przechodzimy do formularza do wpisywania sklepów przyporządkowanych do danego użytkownika. Użytkowników wybieramy z rozwijanej listy po kliknięciu 
