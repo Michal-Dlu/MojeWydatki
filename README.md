@@ -92,6 +92,7 @@ php artisan key:generate
 php artisan migrate
 
 Twoja aplikacja będzie dostępna pod adresem: http://localhost:8000/index
+
 9. W terminalu wpisz:
 
 php artisan serve
