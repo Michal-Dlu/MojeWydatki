@@ -98,7 +98,8 @@ php artisan serve
 
 Wejdź na ten adres w przeglądarce http://localhost:8000/index
 Powinien wyświetlić się panel główny aplikacji MojeWydatki: 
-<img width="2682" height="1096" alt="PanelBezCustomera" src="https://github.com/user-attachments/assets/4e3d407b-5fd4-4e2c-ae17-a8c56d59bcbe" />
+
+<img width="5440" height="2312" alt="PanelBezCustomera" src="https://github.com/user-attachments/assets/c0abb86d-1bf1-42f3-b836-518a075e985c" />
 
 
 
