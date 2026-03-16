@@ -132,6 +132,54 @@ Jeśli wybieramy Usuń przy użytkowniku aplikacja zapyta czy jesteśmy pewni, �
 <img width="1366" height="768" alt="CustomerDelete" src="https://github.com/user-attachments/assets/3b39f1ae-cad8-4491-ae42-ee0e54a1d7f4" />
 Jeśli wciśniemy Ok. Apilkacja usunie danego użytkownika i wyświetli odpowiedni komunikat.
 <img width="1366" height="768" alt="CustomerDeleteSuccess" src="https://github.com/user-attachments/assets/1b122506-f7bc-4a9d-8d10-cbc0f41fe326" />
+Jeśli mamy już chociaż jednego użytkownika. Możemy przejść do Menu Głównego klikając "POWRÓT DO MENU" w prawym, górnym roku ekranu.
+Następnie należy wybrać opcję Sklepy w Menu Głównym, ponieważ do wpisaywania wydatków potrzebny jest chociaż jeden sklep.
+Po kliknięciu kafelka "Sklepy" przechodzimy do formularza do wpisywania sklepów przyporządkowanych do danego użytkownika. Użytkowników wybieramy z rozwijanej listy po kliknięciu 
+"Wybierz użytkownika".
+<img width="2682" height="1096" alt="SklepWybieram" src="https://github.com/user-attachments/assets/73285d33-44e4-4b3b-a11a-12666472bbcd" />
+i po kliknięciu:
+<img width="2682" height="1096" alt="WyborUzytkownikaSklep" src="https://github.com/user-attachments/assets/5662558d-8645-483d-8586-fd28fe4336dd" />
+Aby dodać sklep do bazy danych przechodzimy do formularza poprzez kliknęcie "DODAJ SKLEP"
+<img width="2682" height="1096" alt="DodajSklep" src="https://github.com/user-attachments/assets/b49bdcae-d45a-462f-9af7-4ce9f341131e" />
+Formularz wygląda następująco:
+<img width="2682" height="1096" alt="DodajNowySklep" src="https://github.com/user-attachments/assets/31d3cb37-69b9-4ecd-b317-23dbc679b612" />
+Wpisujemy nazwę sklepu i wybieramy użytkownika z listy rozwijanej i klikamy przycisk "Zapisz Sklep":
+<img width="2682" height="1096" alt="NowySklep" src="https://github.com/user-attachments/assets/cc9a2020-11a4-4bb5-aaf9-3175b90ba24d" />
+Aplikacja wysyłą nas do Listy Sklepów z odpowiednim komentarzem "Sklep został dodany pomyślnie".
+<img width="2682" height="1096" alt="DodanoNowySklep" src="https://github.com/user-attachments/assets/fd7be7ff-7835-49b9-a73d-7de8542e8579" />
+Aby zobaczyć Sklepy przypisane do danego użytkownika należy go wybrać z listy rozwijanej i kliknąć przycisk "Filtruj".
+<img width="2682" height="1096" alt="DodanyNowySklepDoTest" src="https://github.com/user-attachments/assets/27ac4037-9c2f-4051-aced-05f2c16d75e3" />
+Teraz możemy dodać następny sklep klikając "DODAJ SKLEP" lub przejść do Menu Głównego klikając "POWRÓT DO MENU" jeśli chcemy wprowadzić wydatek.
+W Menu Głównym klikamy kafelek: "Wydatki".
+Przechodzimy do Listy Wydatków.
+<img width="2682" height="1096" alt="WydatkiLista" src="https://github.com/user-attachments/assets/28002844-4f44-4bbf-9537-12478700e197" />
+Lista ta służy do filtrowania wydatków według miesiąca, roku, użytkownika, sklepu. Wybrać rok i miesiąc musimy wtedy wyświetlą nam się wszzytkie wydatki
+wszystkich użytkowników w danym roku i miesiącu. Wybierając z listy rozwijanej użytkownika wyfiltrujemy wydatki danego użytkownika ze wsztkich sklepów z w danym roki i miesiącu. Możemy też filtrować po sklepach. Wszystko jest podsumowane na dole ekranu. 
+Ale najperw trzeba dodać nowe wydatki. W tym celu klikamy "NOWY WYDATEK".
+Przechodzimy do formularza:
+<img width="2682" height="1096" alt="NowyWydatek" src="https://github.com/user-attachments/assets/3e856812-aeb6-48de-803d-b3e718346d7e" />
+Wypełniamy fromularz:
+Użytkownika i przypisany do niego sklep wybieramy z listy rozwijanej, kwotę sobie wpisaujemy w odpowiednim polu a po kliknięciu w ikonkę kalendarza wybieramy datę wydatku.
+<img width="2682" height="1096" alt="WydatekFormularz" src="https://github.com/user-attachments/assets/7aaf6855-581d-4e56-935f-0d1a135cbf02" />
+Datę zakupu można też zmieniać bezpośrednio ale mnusimy pamiętać, że jest w formacie angielskim tj. najpierw jest miesiąc a potem dzień miesiąca.
+<img width="2682" height="1096" alt="Data" src="https://github.com/user-attachments/assets/ddbb74f7-de8b-43de-8101-7f90762e26cb" />
+Zapisujemy klikając przycisk Zapisz. Aplikacja wraca nas do Listy Wydatków ze stosownym komentarzem.
+<img width="2682" height="1096" alt="ListaZWydatkiem" src="https://github.com/user-attachments/assets/d909f531-8a9e-4fb6-ac1f-f718ef856527" />
+Teraz możemy sobie wyfiltrować podsumowane wydatki. Wybierająć interesujące nas opcje i klikając przycisk Pokaż sumę wydatków. Np. filtrując miesiąc, rok i użytkownika otrzymujemy podsumowane wszytkie wydatki użytkownika 
+we wszstkich sklepach:
+<img width="2682" height="1096" alt="WydatkiTest" src="https://github.com/user-attachments/assets/0296ac2f-f4f5-43fc-9d92-53eb4975d28d" />
+lub można też wyfiltrować według danego sklepu:
+<img width="2682" height="1096" alt="FiltrowaniePoWydatkach" src="https://github.com/user-attachments/assets/a91e13b9-81e3-4323-9699-e09c39063ca0" />
+
+
+
+
+
+
+
+
+
+
 
 
 
