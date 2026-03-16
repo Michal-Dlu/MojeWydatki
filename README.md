@@ -98,7 +98,8 @@ php artisan serve
 
 Wejdź na ten adres w przeglądarce http://localhost:8000/index
 Powinien wyświetlić się panel główny aplikacji MojeWydatki: 
-<img width="1366" height="768" alt="MojeWydatki" src="https://github.com/user-attachments/assets/b9434916-f362-47db-8def-f836ead712c2" />
+<img width="1366" height="768" alt="PoczatekBezCustomera" src="https://github.com/user-attachments/assets/503a8dcf-d788-4ef7-b3aa-c6895890bc32" />
+
 
 Zalecany Edytor kodu(opcjonalnie)
 Do pracy z projektem warto użyć edytora tekstu np.:
@@ -111,7 +112,10 @@ Do pracy z projektem warto użyć edytora tekstu np.:
 
 Panel główny aplikacji. Tu wybieramy gdzie chcemy działać.
 <img width="1366" height="768" alt="MojeWydatki" src="https://github.com/user-attachments/assets/b9434916-f362-47db-8def-f836ead712c2" />
-Na początku dodajemy sobie użytkowników. Wybieramy Użytkownicy. Pokazuje się nam lista użytkowników. Tutaj wybieramy DODAJ UŻYTKOWNIKA. 
+Na początku musimy dodać pierwszego użytkownika, ponieważ aplikacja blokuje nam opcje Sklepy i Wydatki.
+<img width="1366" height="768" alt="PoczatekBezCustomera" src="https://github.com/user-attachments/assets/b169dcfe-cd26-48c5-9d92-5c7361894f3d" />
+
+Wybieramy Użytkownicy. Pokazuje się nam lista użytkowników. Tutaj wybieramy DODAJ UŻYTKOWNIKA. 
 <img width="1366" height="768" alt="customersList" src="https://github.com/user-attachments/assets/2b8a9a44-ca2d-4865-9504-299f15092aff" />
 Pokaże nam się formularz do dodawania nowego użytkownika.
 <img width="1366" height="768" alt="dodajUzytkownika" src="https://github.com/user-attachments/assets/7b38921b-f4af-40c2-a49d-9a403e0fe1fb" />
