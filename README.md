@@ -120,21 +120,32 @@ Na początku musimy dodać pierwszego użytkownika, ponieważ aplikacja blokuje 
 
 
 Wybieramy Użytkownicy. Pokazuje się nam lista użytkowników. Tutaj wybieramy DODAJ UŻYTKOWNIKA. 
+<img width="1864" height="1104" alt="Customers" src="https://github.com/user-attachments/assets/60779eb2-d862-4c4c-8524-fdcab0f8391d" />
 
 Pokaże nam się formularz do dodawania nowego użytkownika.
+<img width="1864" height="1104" alt="AddCustomer" src="https://github.com/user-attachments/assets/8b25ec0b-24b4-4cb3-ac1f-c6a4efa824ad" />
 
 Po wpisaniu nazwy nowego użytkownika i kliknięciu przycisku "Zapisz użytkownika". Znów pokaże nam się lista użytkowników, gdzie można usunąć lub edytować użytkowników.
 Można też wyczyścić formularz kilkająć "WYCZYŚĆ FORMULARZ". Można też powrócić do Listy użytkowników klikając "LISTA UŻYTKOWNIKÓW" lub do panelu głównego klikając 
 "POWRÓT DO MENU".
 
 Dodanych użytkowników można edytować i usuwać, klikając przyciski "Edytuj" i "Usuń" przy danym użytkowniku.
+<img width="1864" height="1104" alt="Customer Edition" src="https://github.com/user-attachments/assets/f0af19c2-b9c7-42fc-9295-3e8b29fcdecb" />
 
-Jeśli wybraliśmy "Edytuj" wyświelta nam się strona do edycji użytkownika. Jeśli poprawimy dane i zatwierdzimy użytkownika. Wrócimy do Listy Użytkowników
-ale pojawi nam się komunikat: Użtkownik został zaktualizowany pomyślnie.
+Jeśli wybraliśmy "Edytuj" wyświelta nam się strona do edycji użytkownika. 
+<img width="1864" height="1104" alt="CustomerEdition2" src="https://github.com/user-attachments/assets/165e6497-b11e-42fc-aa44-e946b05e1c0b" />
+
+
+Jeśli poprawimy dane i zatwierdzimy użytkownika. Wrócimy do Listy Użytkowników
+ale pojawi nam się komunikat: Użytkownik został zaktualizowany pomyślnie.
+<img width="1864" height="1104" alt="CustomerEdition3" src="https://github.com/user-attachments/assets/47548a45-897d-42d2-91c2-bb9dbb55769f" />
 
 Jeśli wybieramy Usuń przy użytkowniku aplikacja zapyta czy jesteśmy pewni, że chcemy usunąć tego użytkownika.
+<img width="1864" height="1104" alt="CustomerDelete" src="https://github.com/user-attachments/assets/b9c0a9dd-c2fd-4eae-97bb-8ed7b483e1f3" />
 
 Jeśli wciśniemy Ok. Apilkacja usunie danego użytkownika i wyświetli odpowiedni komunikat.
+<img width="1864" height="1104" alt="CustomerDelete2" src="https://github.com/user-attachments/assets/deaa008f-325b-494e-999a-0afb7c899b33" />
+
 
 Jeśli mamy już chociaż jednego użytkownika. Możemy przejść do Menu Głównego klikając "POWRÓT DO MENU" w prawym, górnym roku ekranu.
 Następnie należy wybrać opcję Sklepy w Menu Głównym, ponieważ do wpisaywania wydatków potrzebny jest chociaż jeden sklep.
