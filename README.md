@@ -214,15 +214,37 @@ Użytkownika i przypisany do niego sklep wybieramy z listy rozwijanej, kwotę so
 
 
 
-Datę zakupu można też zmieniać bezpośrednio ale mnusimy pamiętać, że jest w formacie angielskim tj. najpierw jest miesiąc a potem dzień miesiąca.
-<img width="2682" height="1096" alt="Data" src="https://github.com/user-attachments/assets/ddbb74f7-de8b-43de-8101-7f90762e26cb" />
-Zapisujemy klikając przycisk Zapisz. Aplikacja wraca nas do Listy Wydatków ze stosownym komentarzem.
-<img width="2682" height="1096" alt="ListaZWydatkiem" src="https://github.com/user-attachments/assets/d909f531-8a9e-4fb6-ac1f-f718ef856527" />
+Datę zakupu można też zmieniać bezpośrednio ale mnusimy pamiętać, że w zależności od ustawień lokalizacujnych przeglądarki może być w formacie polskim lub angielskim 
+tj. najpierw jest miesiąc a potem dzień miesiąca.
+
+tu polska wersja przeglądarki
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/7a41eb0e-e35f-409c-ba0a-06807ea890c2" />
+
+a tu angielska przeglądarki
+
+<img width="1366" height="768" alt="wydatki4" src="https://github.com/user-attachments/assets/e80fec9a-9a09-434a-b255-afb06d47cf0a" />
+
+
+Zapisujemy klikając przycisk Zapisz. Aplikacja wraca nas do Listy Wydatków ze stosownym komentarzem. Dodany wydatek pojawia się na górze listy.
+
+
+<img width="1366" height="768" alt="wydatek4" src="https://github.com/user-attachments/assets/8fe50fd0-240b-43ef-a05b-ae3d870dfeb2" />
+
+
 Teraz możemy sobie wyfiltrować podsumowane wydatki. Wybierająć interesujące nas opcje i klikając przycisk Pokaż sumę wydatków. Np. filtrując miesiąc, rok i użytkownika otrzymujemy podsumowane wszytkie wydatki użytkownika 
-we wszstkich sklepach:
-<img width="2682" height="1096" alt="WydatkiTest" src="https://github.com/user-attachments/assets/0296ac2f-f4f5-43fc-9d92-53eb4975d28d" />
+we wszystkich sklepach:
+
+
+<img width="1366" height="768" alt="wydatki5" src="https://github.com/user-attachments/assets/08459d52-599c-4dc1-b6a4-51634492a369" />
+
+
+
+
 lub można też wyfiltrować według danego sklepu:
-<img width="2682" height="1096" alt="FiltrowaniePoWydatkach" src="https://github.com/user-attachments/assets/a91e13b9-81e3-4323-9699-e09c39063ca0" />
+
+
+<img width="1366" height="768" alt="wydatki6" src="https://github.com/user-attachments/assets/75ac3b09-213b-4f7b-9a4e-4af7538548ac" />
+
 
 
 
