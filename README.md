@@ -173,23 +173,47 @@ Formularz wygląda następująco:
 
 
 Wpisujemy nazwę sklepu i wybieramy użytkownika z listy rozwijanej i klikamy przycisk "Zapisz Sklep":
-<img width="2682" height="1096" alt="NowySklep" src="https://github.com/user-attachments/assets/cc9a2020-11a4-4bb5-aaf9-3175b90ba24d" />
+
+
 Aplikacja wysyłą nas do Listy Sklepów z odpowiednim komentarzem "Sklep został dodany pomyślnie".
-<img width="2682" height="1096" alt="DodanoNowySklep" src="https://github.com/user-attachments/assets/fd7be7ff-7835-49b9-a73d-7de8542e8579" />
+
+![sklep4](https://github.com/user-attachments/assets/13256881-8996-4383-a65b-477bf36af124)
+
+
 Aby zobaczyć Sklepy przypisane do danego użytkownika należy go wybrać z listy rozwijanej i kliknąć przycisk "Filtruj".
-<img width="2682" height="1096" alt="DodanyNowySklepDoTest" src="https://github.com/user-attachments/assets/27ac4037-9c2f-4051-aced-05f2c16d75e3" />
+
+
+![sklep5](https://github.com/user-attachments/assets/98233d92-2284-43c5-9845-f2c35d77ca48)
+
+
 Teraz możemy dodać następny sklep klikając "DODAJ SKLEP" lub przejść do Menu Głównego klikając "POWRÓT DO MENU" jeśli chcemy wprowadzić wydatek.
 W Menu Głównym klikamy kafelek: "Wydatki".
 Przechodzimy do Listy Wydatków.
-<img width="2682" height="1096" alt="WydatkiLista" src="https://github.com/user-attachments/assets/28002844-4f44-4bbf-9537-12478700e197" />
+
+<img width="1366" height="768" alt="wydatki" src="https://github.com/user-attachments/assets/403e835e-0d86-40ad-97e0-1578a90efecc" />
+
+
+
+
 Lista ta służy do filtrowania wydatków według miesiąca, roku, użytkownika, sklepu. Wybrać rok i miesiąc musimy wtedy wyświetlą nam się wszzytkie wydatki
 wszystkich użytkowników w danym roku i miesiącu. Wybierając z listy rozwijanej użytkownika wyfiltrujemy wydatki danego użytkownika ze wsztkich sklepów z w danym roki i miesiącu. Możemy też filtrować po sklepach. Wszystko jest podsumowane na dole ekranu. 
 Ale najperw trzeba dodać nowe wydatki. W tym celu klikamy "NOWY WYDATEK".
 Przechodzimy do formularza:
-<img width="2682" height="1096" alt="NowyWydatek" src="https://github.com/user-attachments/assets/3e856812-aeb6-48de-803d-b3e718346d7e" />
+
+
+
+<img width="1366" height="768" alt="wydatki2" src="https://github.com/user-attachments/assets/efa2cf0b-178e-48b0-9b2a-e75f20d5ff6a" />
+
+
 Wypełniamy fromularz:
 Użytkownika i przypisany do niego sklep wybieramy z listy rozwijanej, kwotę sobie wpisaujemy w odpowiednim polu a po kliknięciu w ikonkę kalendarza wybieramy datę wydatku.
-<img width="2682" height="1096" alt="WydatekFormularz" src="https://github.com/user-attachments/assets/7aaf6855-581d-4e56-935f-0d1a135cbf02" />
+
+
+<img width="1366" height="768" alt="wydatki3" src="https://github.com/user-attachments/assets/13129307-72b5-459c-8789-1390657a0eab" />
+
+
+
+
 Datę zakupu można też zmieniać bezpośrednio ale mnusimy pamiętać, że jest w formacie angielskim tj. najpierw jest miesiąc a potem dzień miesiąca.
 <img width="2682" height="1096" alt="Data" src="https://github.com/user-attachments/assets/ddbb74f7-de8b-43de-8101-7f90762e26cb" />
 Zapisujemy klikając przycisk Zapisz. Aplikacja wraca nas do Listy Wydatków ze stosownym komentarzem.
