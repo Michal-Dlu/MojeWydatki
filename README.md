@@ -157,11 +157,21 @@ Po kliknięciu kafelka "Sklepy" przechodzimy do formularza do wpisywania sklepó
 
 i po kliknięciu:
 
-<img width="2682" height="1096" alt="WyborUzytkownikaSklep" src="https://github.com/user-attachments/assets/5662558d-8645-483d-8586-fd28fe4336dd" />
+
+<img width="1864" height="1104" alt="sklep2" src="https://github.com/user-attachments/assets/01c2de95-2984-4275-ac2a-9fd89f3801ed" />
+
+
+
 Aby dodać sklep do bazy danych przechodzimy do formularza poprzez kliknęcie "DODAJ SKLEP"
-<img width="2682" height="1096" alt="DodajSklep" src="https://github.com/user-attachments/assets/b49bdcae-d45a-462f-9af7-4ce9f341131e" />
+
+<img width="1864" height="1104" alt="sklep3" src="https://github.com/user-attachments/assets/887fee41-823e-4125-9eaf-a7e07be514ee" />
+
 Formularz wygląda następująco:
-<img width="2682" height="1096" alt="DodajNowySklep" src="https://github.com/user-attachments/assets/31d3cb37-69b9-4ecd-b317-23dbc679b612" />
+
+
+<img width="1864" height="1104" alt="sklep4" src="https://github.com/user-attachments/assets/25459c07-471b-4c20-a5ff-05607918b3c7" />
+
+
 Wpisujemy nazwę sklepu i wybieramy użytkownika z listy rozwijanej i klikamy przycisk "Zapisz Sklep":
 <img width="2682" height="1096" alt="NowySklep" src="https://github.com/user-attachments/assets/cc9a2020-11a4-4bb5-aaf9-3175b90ba24d" />
 Aplikacja wysyłą nas do Listy Sklepów z odpowiednim komentarzem "Sklep został dodany pomyślnie".
