@@ -151,8 +151,12 @@ Jeśli mamy już chociaż jednego użytkownika. Możemy przejść do Menu Głów
 Następnie należy wybrać opcję Sklepy w Menu Głównym, ponieważ do wpisaywania wydatków potrzebny jest chociaż jeden sklep.
 Po kliknięciu kafelka "Sklepy" przechodzimy do formularza do wpisywania sklepów przyporządkowanych do danego użytkownika. Użytkowników wybieramy z rozwijanej listy po kliknięciu 
 "Wybierz użytkownika".
-<img width="1682" height="1104" alt="SklepWybieram" src="https://github.com/user-attachments/assets/73285d33-44e4-4b3b-a11a-12666472bbcd" />
+
+<img width="1864" height="1104" alt="sklep" src="https://github.com/user-attachments/assets/11a0ac2d-3879-44f9-85d9-436990cf633f" />
+
+
 i po kliknięciu:
+
 <img width="2682" height="1096" alt="WyborUzytkownikaSklep" src="https://github.com/user-attachments/assets/5662558d-8645-483d-8586-fd28fe4336dd" />
 Aby dodać sklep do bazy danych przechodzimy do formularza poprzez kliknęcie "DODAJ SKLEP"
 <img width="2682" height="1096" alt="DodajSklep" src="https://github.com/user-attachments/assets/b49bdcae-d45a-462f-9af7-4ce9f341131e" />
