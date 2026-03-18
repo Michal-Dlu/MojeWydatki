@@ -182,8 +182,9 @@ Aplikacja wysyłą nas do Listy Sklepów z odpowiednim komentarzem "Sklep zosta�
 
 Aby zobaczyć Sklepy przypisane do danego użytkownika należy go wybrać z listy rozwijanej i kliknąć przycisk "Filtruj".
 
+<img width="1366" height="768" alt="sklep6" src="https://github.com/user-attachments/assets/944a7d82-83d6-4cfa-b568-3e1be2924b8d" />
 
-![sklep5](https://github.com/user-attachments/assets/98233d92-2284-43c5-9845-f2c35d77ca48)
+
 
 
 Teraz możemy dodać następny sklep klikając "DODAJ SKLEP" lub przejść do Menu Głównego klikając "POWRÓT DO MENU" jeśli chcemy wprowadzić wydatek.
@@ -218,7 +219,9 @@ Datę zakupu można też zmieniać bezpośrednio ale mnusimy pamiętać, że w z
 tj. najpierw jest miesiąc a potem dzień miesiąca.
 
 tu polska wersja przeglądarki
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/7a41eb0e-e35f-409c-ba0a-06807ea890c2" />
+
+<img width="1366" height="768" alt="wydatek7" src="https://github.com/user-attachments/assets/ddfc49e6-4110-4b65-abbe-30648d4dc559" />
+
 
 a tu angielska przeglądarki
 
