@@ -85,11 +85,9 @@ class ExpensesController extends Controller
     $month = old('month', $request->input('month'));
     $year = old('year', $request->input('year'));
     $sklep = old('sklep', $request->input('sklep', '0'));
-    if($request->filled('customer_id')) {
-        $customer_id = $request->input('customer_id');
-    } else {
-        $customer_id = session('last_selected_customer', '0'); // Pobierz ostatnio wybranego klienta z sesji, domyślnie '0'
-    }
+ if ($request->filled('customer_id') && $request->input('customer_id') != '0') {
+    session(['last_selected_customer' => $request->input('customer_id')]);
+}
    // Pobierz ostatnio wybranego klienta z sesji, domyślnie '0'
     $customer_id = old('customer_id', $request->input('customer_id', session('last_selected_customer', '0')));
 
