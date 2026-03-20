@@ -9,11 +9,14 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use Illuminate\Support\Carbon;
 
+use function Symfony\Component\String\s;
+
 class ExpensesController extends Controller
 {
     public function list(Request $request)
     {           
-        $customer_id = $request->input('customer_id');  // Przechwyć dane z formularza
+        $customer_id = $request->input('customer_id'); 
+        session(['last_selected_customer' => $customer_id]); // Przechwyć dane z formularza
         $expensesQuery = Expense::query()
         ->when($customer_id, fn($query)=>$query->where('customer_id',$customer_id))
         ->where('data_zakupu', '>=', Carbon::now()->subMonth()) 
@@ -26,7 +29,7 @@ class ExpensesController extends Controller
 
         $customer = Customer::find($customer_id);  // Znajdź klienta po ID
     
-   // $sum = $expenses->sum('kwota');
+
         $shops = Shop::orderBy('sklep', 'asc')->get();
         $customers = Customer::all();
        
@@ -41,7 +44,7 @@ class ExpensesController extends Controller
             'data_zakupu' => 'required|date'
            
         ],['customer_id.exists' => 'Proszę wybrać prawidłowego użytkownika.',
-            'sklep.required' => 'Pole sklep jest wymagane.',
+           'sklep.required' => 'Pole sklep jest wymagane.',
            'sklep.exists' => 'Wybrany sklep nie istnieje w bazie danych.',
            'kwota.required' => 'Pole kwota jest wymagane.',
            'data_zakupu.required' => 'Pole data zakupu jest wymagane.',
@@ -82,7 +85,13 @@ class ExpensesController extends Controller
     $month = old('month', $request->input('month'));
     $year = old('year', $request->input('year'));
     $sklep = old('sklep', $request->input('sklep', '0'));
-    $customer_id = old('customer_id', $request->input('customer_id', '0'));
+    if($request->filled('customer_id')) {
+        $customer_id = $request->input('customer_id');
+    } else {
+        $customer_id = session('last_selected_customer', '0'); // Pobierz ostatnio wybranego klienta z sesji, domyślnie '0'
+    }
+   // Pobierz ostatnio wybranego klienta z sesji, domyślnie '0'
+    $customer_id = old('customer_id', $request->input('customer_id', session('last_selected_customer', '0')));
 
     // Jeśli nie wybrano klienta, ustaw wartość '0'
     if ($customer_id == "Wybierz użytkownika") {
@@ -123,14 +132,14 @@ if ($sklep && $sklep != '0') {
 }
 
 // Suma wszystkich dopasowanych rekordów
-$sum = $query->sum('kwota');
+$sum = (clone $query)->sum('kwota');
 
 // Paginacja po wszystkich rekordach
 $expenses = $query->orderBy('data_zakupu', 'desc')
                   ->paginate($perPage)
                   ->withQueryString();
 
-   
+
 $customers = Customer::all();
  
 

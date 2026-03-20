@@ -22,6 +22,9 @@
         <section class="page-section portfolio" id="portfolio" style="padding:20px">
             <div class="container">
                 {{-- Komunikat dla nowych użytkowników --}}
+                @php
+                $CustomerExists = true; // Możesz ustawić to na true lub false w zależności od potrzeby
+                @endphp
 @if(!$CustomerExists)
     <div class="alert alert-info text-center">
         Aby skorzystać z aplikacji wprowadź pierwszego użytkownika

@@ -2,6 +2,7 @@
       @section('content')
     
     <body id="page-top">
+   
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
@@ -19,7 +20,9 @@
                 </div>
             </div>
         </nav>
-      
+        <?php
+     
+      ?>
         <!-- Portfolio Section-->
         <section class="masthead page-section portfolio" id="portfolio">
             <div class="container">
@@ -50,18 +53,16 @@
 </select> 
 
 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="customer_id" id="customer_id" >
-                            <option >Wybierz użytkownika</option>
-                            @foreach($customers as $customer)
-                             
-                             <option value="{{$customer->id}}" @selected(old('customer_id',$customer_id) == $customer->id)>{{$customer->name}}</option>
+                            <option value="0">Wybierz użytkownika</option>
+                            @foreach($customers as $customer)                             
+                             <option value="{{$customer->id}}"
+                             @selected(old('customer_id',session('last_selected_customer')) == $customer->id)>{{$customer->name}}</option>
                             @endforeach
 </select>
 
 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"  name="sklep" id="shop_name">
                             <option value="">Wybierz sklep</option>
-                            <!--@foreach($shops as $shop)
-                             <option value="{{$shop->sklep}}">{{$shop->sklep}}</option>
-                            @endforeach-->
+                       
 </select>
 
  <button type="submit" class="btn btn-primary">Pokaż sumę wydatków</button>
@@ -71,25 +72,25 @@
 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
     Lista Wydatków 
  
-    @if(isset($customer_id))
-       
-       {{ $customer->name ?? '' }}  
-  
-    @endif
+  @if(session()->has('last_selected_customer'))   
+    @php 
+      $lastSelectedCustomer = App\Models\Customer::find(session('last_selected_customer'));    
+    @endphp
+      {{ $lastSelectedCustomer->name ?? ''}}
+   @endif
 </h2>
-                @if(session()->has('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-
-  {{ session()->get('success') }}
-      <button type="submit" class="btn-close"  data-bs-dismiss="alert" aria-label="Close">                  
-      </button>
-                @endif  
-</div>
+@if(session()->has('success'))
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session()->get('success') }}
+    <button type="submit" class="btn-close"  data-bs-dismiss="alert" aria-label="Close"><button>               
+  </div>
+@endif  
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
+
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
     <table class="table table-hover" class="table table-sm">

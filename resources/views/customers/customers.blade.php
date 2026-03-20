@@ -26,12 +26,12 @@
    
                   <!-- Portfolio Section Heading-->
                   <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Lista Użytkowników</h2>
-                  <!-- Icon Divider-->                                      @if(session()->has('success'))
-                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  {{ session()->get('success') }}
-      <button type="button" class="btn-close"  data-bs-dismiss="alert" aria-label="Close">
-        </div>
-        @endif
+   @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
                   <div class="divider-custom">
                       <div class="divider-custom-line"></div>
                       <div class="divider-custom-icon"><i class="fas fa-star"></i></div>

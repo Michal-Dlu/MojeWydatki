@@ -72,7 +72,7 @@
                             </div>
                            
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="date" type="date" name="data_zakupu" placeholder="" value="{{\Carbon\Carbon::now()->format('Y-m-d')}}" />
+                                <input class="form-control" id="date" type="date" name="data_zakupu" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" />
                                 <label for="date">Data_zakupu</label>                               
                             </div>
                   
